@@ -1,0 +1,47 @@
+@import "../../assets/styles/global_style.scss";
+$greyText: #5d6066;
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 42px;
+  width: 1440px;
+  background-color: $lightGrey;
+}
+
+.navigation {
+  display: flex;
+  height: 20px;
+  gap: 24px;
+}
+
+.city {
+  display: flex;
+  height: 20px;
+  gap: 8px;
+}
+
+a {
+  color: $greyText;
+  text-decoration: none;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation > a:nth-child(1) {
+    display: none;
+  }
+  .navigation > a:nth-child(4) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  nav {
+    display: none;
+  }
+}
