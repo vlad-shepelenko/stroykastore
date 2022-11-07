@@ -6,8 +6,8 @@ const Navbar = () => {
       <nav>
         <div className="city">
           <span>
-            <object type="image/svg+xml" data={mapcheck}>
-              <img className="cityImg" src={mapcheck} alt="Город" />
+            <object data={mapcheck} type="image/svg+xml">
+              Location
             </object>
           </span>
           <a href="google.com">Город</a>
