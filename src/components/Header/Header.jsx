@@ -7,27 +7,30 @@ import {
   catalog,
   mapcheck,
 } from "../../assets/images";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
-  const [showMenu, setShowMenu] = useState(false);
-  console.log(showMenu);
+  const [showMenu, setShowMenu] = useState(true);
+  const windowInnerWidth = window.innerWidth;
+  useEffect(() => {
+    windowInnerWidth < 1000 ? setShowMenu(false) : setShowMenu(true);
+  }, [windowInnerWidth]);
+  const handleClick = () => {
+    showMenu === false ? setShowMenu(true) : setShowMenu(false);
+    console.log(showMenu);
+  };
   return (
     <>
       <header>
         <section className="header_mobile">
           <section className="header_pc">
-            <object
-              onClick={() => {
-                showMenu === false ? setShowMenu(true) : setShowMenu(false);
-              }}
-              data={catalog}
-              type="image/svg+xml"
+            <img
+              src={catalog}
               className="burger_menu"
-            >
-              Menu
-            </object>
-            <section className="logo">
+              onClick={handleClick}
+              alt="catalog"
+            />
+            <section onClick={handleClick} className="logo">
               <span>
                 <object data={logo} type="image/svg+xml">
                   Logo
@@ -98,7 +101,10 @@ const Header = () => {
           ></input>
         </section>
         <hr className="dividing_line" />
-        <section className="opened_menu">
+        <section
+          style={{ display: showMenu ? "block" : "none" }}
+          className="opened_menu"
+        >
           <section className="mobile_menu">
             <div className="button_catalog">
               <object
