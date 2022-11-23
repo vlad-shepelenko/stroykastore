@@ -7,21 +7,47 @@ import {
   catalog,
   mapcheck,
 } from "../../assets/images";
-import { useState, useEffect } from "react";
+import { Slider } from "../../components/Slider";
+import { useState, useEffect, useRef } from "react";
+import useResizeObserver from "@react-hook/resize-observer";
+import { useLayoutEffect } from "react";
+
+const useSize = (target) => {
+  const [size, setSize] = useState();
+  useLayoutEffect(() => {
+    setSize(target.current.getBoundingClientRect());
+  }, [target]);
+
+  useResizeObserver(target, (entry) => setSize(entry.contentRect));
+  return size;
+};
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(true);
-  const windowInnerWidth = window.innerWidth;
+  const [showSlider, setShowSlider] = useState(true);
+  const target = useRef(null);
+  const size = useSize(target);
+
   useEffect(() => {
-    windowInnerWidth < 1000 ? setShowMenu(false) : setShowMenu(true);
-  }, [windowInnerWidth]);
+    if (size !== undefined && size.width < 1000 && size.width > 680) {
+      setShowMenu(false);
+    }
+    if (size !== undefined && size.width > 1024) {
+      setShowMenu(true);
+    }
+  }, [size]);
   const handleClick = () => {
-    showMenu === false ? setShowMenu(true) : setShowMenu(false);
-    console.log(showMenu);
+    if (size.width !== undefined && size.width < 680 && showMenu) {
+      setShowMenu(false);
+      setShowSlider(true);
+    } else {
+      setShowMenu(true);
+      setShowSlider(false);
+    }
   };
   return (
     <>
-      <header>
+      <header ref={target}>
         <section className="header_mobile">
           <section className="header_pc">
             <img
@@ -174,6 +200,13 @@ const Header = () => {
         </section>
         <hr className="dividing_line" />
       </header>
+      {showSlider ? (
+        <Slider className="slider_display" />
+      ) : (
+        <div style={{ display: "none" }}>
+          <Slider />
+        </div>
+      )}
     </>
   );
 };

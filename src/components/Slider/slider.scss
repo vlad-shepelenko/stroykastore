@@ -1,0 +1,271 @@
+@import "../../assets/styles/global_style.scss";
+
+.hOQiSy {
+  height: 420px !important;
+  width: 95vw !important;
+}
+
+.epKbGN {
+  justify-content: flex-end !important;
+  gap: 12px !important;
+  padding: 0rem 9rem !important;
+  top: auto;
+}
+
+.slider_image {
+  object-fit: cover;
+}
+
+.container_image {
+  height: 420px;
+  width: 95vw;
+}
+
+.slider_container {
+  display: block;
+}
+
+[data-testid="indicatorContainer"] {
+  display: none !important;
+}
+
+button[aria-label="backButton"],
+button[aria-label="forwardButton"] {
+  background-color: #ffffff;
+  border-radius: 0%;
+}
+
+.hOQiSy {
+  display: flex;
+}
+.epKbGN {
+  top: auto !important;
+  margin-top: 332px;
+}
+
+.slider_container_text {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin-top: 40px;
+  margin-left: 100px;
+  height: 340px;
+  justify-content: space-between;
+}
+
+.slider_title_description {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: #454950;
+  width: max-content;
+}
+
+.slider_title {
+  margin: 0;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 58px;
+  color: #171b24;
+}
+
+.slider_text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.slider_button_more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 147px;
+  background-color: #fcec41;
+  border: none;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #171b24;
+}
+
+.split_line {
+  display: none;
+}
+
+@media screen and (max-width: 1440px) {
+  .epKbGN {
+    margin-top: 330px;
+  }
+  .slider_container {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container_image {
+    height: 360px;
+  }
+
+  .hOQiSy {
+    height: 360px !important;
+    width: 87vw !important;
+  }
+
+  .epKbGN {
+    margin-top: 272px;
+    padding: 0rem 12rem !important;
+  }
+
+  .slider_image {
+    width: auto;
+    height: 360px;
+  }
+
+  .slider_container_text {
+    height: 280px;
+    margin-top: 40px;
+    margin-left: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hOQiSy {
+    height: 360px;
+  }
+
+  .epKbGN {
+    margin-top: 268px;
+    padding: 0rem 9rem !important;
+  }
+
+  .slider_container_text {
+    height: 280px;
+    margin-top: 40px;
+    margin-left: 40px;
+  }
+
+  .slider_title {
+    margin: 0;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 44px;
+  }
+
+  .slider_title_description {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  @media screen and (max-width: 660px) {
+    .split_line {
+      display: flex;
+    }
+
+    .split_line_none {
+      display: none;
+    }
+    .slider_title_description {
+      width: 90%;
+    }
+
+    .slider_container_text {
+      width: 100%;
+      margin-bottom: 40px;
+      margin-right: 40px;
+    }
+
+    .epKbGN {
+      margin-top: 271px;
+    }
+  }
+  @media screen and (max-width: 622px) {
+    .epKbGN {
+      padding: 0rem 6rem !important   ;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .hOQiSy {
+    height: 206px !important;
+  }
+
+  .epKbGN {
+    margin-top: 166px;
+    padding: 0rem 4rem !important;
+  }
+
+  .hCJOJS {
+    width: 2rem !important;
+    height: 2rem !important;
+    line-height: 2.5rem !important;
+  }
+
+  .slider_title_container {
+    width: 212px;
+  }
+
+  .slider_title {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 34px;
+  }
+
+  .slider_title_description {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  .slider_container_text {
+    height: 186px;
+    margin-top: 10px;
+    margin-left: 20px;
+    justify-content: space-between;
+  }
+
+  .slider_text {
+    gap: 4px;
+  }
+
+  .slider_button_more {
+    height: 32px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 409px) {
+  .epKbGN {
+    height: 28px;
+    margin-top: 291px;
+  }
+
+  .hCJOJS {
+    width: 28px !important;
+    height: 28px !important;
+    line-height: 2.1rem !important;
+  }
+
+  .slider_button_more {
+    height: 28px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .epKbGN {
+    margin-top: 167px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .epKbGN {
+    margin-top: 172px;
+  }
+}

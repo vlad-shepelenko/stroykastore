@@ -149,6 +149,10 @@ ul {
   display: none;
 }
 
+.slider_display {
+  display: flex;
+}
+
 @media screen and (max-width: 1024px) {
   .search_button {
     min-width: 130px;
@@ -327,5 +331,12 @@ ul {
 
   .dividing_line:nth-last-child(1) {
     display: none;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header_pc {
+    justify-content: center;
+    gap: 10px;
   }
 }
