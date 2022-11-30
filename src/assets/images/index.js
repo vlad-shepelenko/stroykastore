@@ -7,5 +7,20 @@ import profile from './profile.svg';
 import specialoffers from "./specialoffers.svg";
 import sale from "./sale.svg";
 import search from './search.svg';
+import arrow from './arrow.svg';
+import doors from './doors.svg';
+import electricalGoods from './electricalGoods.svg';
+import goodsForGiving from './goodsForGiving.svg';
+import instrument from './instrument.svg';
+import interior from './interior.svg';
+import linoleum from './linoleum.svg';
+import lumber from './lumber.svg';
+import paints from './paints.svg';
+import plumbing from './plumbing.svg';
+import showers from './showers.svg';
+import wallpapers from './wallpaper.svg';
+import windows from './windows.svg';
 
-export { mapcheck, logo, cart, catalog, orders, profile, specialoffers, sale, search };
+export { mapcheck, logo, cart, catalog, orders, profile, specialoffers, sale, search, arrow,
+         doors, electricalGoods, goodsForGiving, instrument, interior, linoleum, lumber,
+         paints, plumbing, showers, wallpapers, windows };

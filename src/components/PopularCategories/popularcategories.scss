@@ -1,0 +1,71 @@
+@import "../../assets/styles/global_style.scss";
+
+.popularCategories_container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.header_categories{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title_categories{
+    margin-left: 7%;
+    font-family: $font;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 44px;
+    color: #2F323A;
+}
+
+.all_categories_button{
+    width: 198px;
+    height: 48px;
+    background: url('../../assets/images/arrow.svg') #FFFFFF;
+    background-position: top 18px right 15px;
+    background-size: 6px 12px;
+    background-repeat: no-repeat;
+    border: 1px solid #D1D1D3;
+    font-family: $font;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #171B24;
+    margin-right: 7%;
+}
+
+.cart_categories{
+    width: 180px;
+    height: 180px;
+    background-color: #F6F6F6;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.cart_categories_name{
+    font-family: $font;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.cart_categories_container{
+    margin: 0 7%;
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 31px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
