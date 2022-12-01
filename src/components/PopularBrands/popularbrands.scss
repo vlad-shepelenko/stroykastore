@@ -1,12 +1,12 @@
 @import "../../assets/styles/global_style.scss";
 
-.popularCategories_container{
+.popularBrands_container{
     display: flex;
     width: 100%;
     flex-direction: column;
 }
 
-.header_categories{
+.header_brands{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -14,7 +14,7 @@
     align-items: center;
 }
 
-.title_categories{
+.title_brands{
     margin-left: 7%;
     font-family: $font;
     font-style: normal;
@@ -24,8 +24,8 @@
     color: #2F323A;
 }
 
-.all_categories_button{
-    width: 198px;
+.all_brands_button{
+    width: 174px;
     height: 48px;
     background: url('../../assets/images/arrow.svg') #FFFFFF;
     background-position: top 18px right 15px;
@@ -41,49 +41,12 @@
     margin-right: 7%;
 }
 
-.cart_categories{
-    width: 180px;
-    height: 180px;
-    background-color: #F6F6F6;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.cart_categories_name{
-    font-family: $font;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 24px;
-}
-
-.cart_categories_container{
+.cart_brands_container{
     margin: 0 7%;
     width: 90%;
     display: flex;
     justify-content: flex-start;
-    gap: 31px;
+    gap: 31.4px;
     flex-wrap: wrap;
     flex-direction: row;
-}
-
-@media screen and (max-width: 700px) {
-    .title_categories{
-        font-size: 26px;
-    }
-}
-
-@media screen and (max-width: 550px) {
-    .all_categories_button{
-        font-size: 14px;
-    }
-}
-
-@media screen and (max-width: 550px) {
-    .cart_categories_container{
-        gap: 5px;
-    }
 }

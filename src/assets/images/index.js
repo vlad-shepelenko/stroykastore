@@ -20,7 +20,11 @@ import plumbing from './plumbing.svg';
 import showers from './showers.svg';
 import wallpapers from './wallpaper.svg';
 import windows from './windows.svg';
+import stoneware from './stoneware.svg';
+import bever from './bever.svg';
+import leftArrow from './leftArrow.svg';
+import rightArrow from './rightArrow.svg';
 
 export { mapcheck, logo, cart, catalog, orders, profile, specialoffers, sale, search, arrow,
          doors, electricalGoods, goodsForGiving, instrument, interior, linoleum, lumber,
-         paints, plumbing, showers, wallpapers, windows };
+         paints, plumbing, showers, wallpapers, windows, stoneware, bever, leftArrow, rightArrow };

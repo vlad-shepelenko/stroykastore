@@ -1,5 +1,6 @@
 import './popularcategories.scss';
 import {popularCategoriesData} from '../../assets/data'
+
 const PopularCategories = () => {
     return(
         <>
@@ -19,7 +20,6 @@ const PopularCategories = () => {
                         </div>
                     ))
                 }
-                
                 </div>
             </section>
         </>

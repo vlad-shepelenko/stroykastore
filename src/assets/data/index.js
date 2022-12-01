@@ -1,3 +1,5 @@
 import popularCategoriesData from "./popularCategoriesData";
+import popularProductsData from "./popularProductsData";
+import popularBrandsData from "./popularBrandsData";
 
-export {popularCategoriesData};
+export {popularCategoriesData, popularProductsData, popularBrandsData};

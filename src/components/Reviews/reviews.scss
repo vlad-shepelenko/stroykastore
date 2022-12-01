@@ -1,0 +1,37 @@
+@import "../../assets/styles/global_style.scss";
+
+.reviews_container{
+    background-color: #F6F6F6;
+    width: 100%;
+    height: 593px;
+}
+
+.reviews_title{
+    margin-left: 7%;
+    font-family: $font;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 44px;
+    color: #2F323A;
+}
+
+.button_review{
+    width: 52px;
+    height: 52px;
+    background: $white;
+    border: 1px solid #D1D1D3;
+}
+
+.header_reviews{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reviews_buttons{
+    margin-right: 7%;
+    display: flex;
+    gap: 12px;
+}
