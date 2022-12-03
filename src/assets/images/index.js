@@ -24,7 +24,25 @@ import stoneware from './stoneware.svg';
 import bever from './bever.svg';
 import leftArrow from './leftArrow.svg';
 import rightArrow from './rightArrow.svg';
+import cherepica from './cherepica.svg'
+import pena from './pena.svg'
+import ruberoid from './ruberoid.svg'
+import setka from './setka.svg'
+import avatar from './avatar.svg'
+import commas from './commas.svg'
+import about from './about.svg'
+import footer_location from './footer_location.svg'
+import footer_logo from './footer_logo.svg'
+import footer_message from './footer_message.svg'
+import maestro from './maestro.svg'
+import mastercard from './mastercard.svg'
+import visa from './visa.svg'
+import mir from './mir.svg'
 
-export { mapcheck, logo, cart, catalog, orders, profile, specialoffers, sale, search, arrow,
-         doors, electricalGoods, goodsForGiving, instrument, interior, linoleum, lumber,
-         paints, plumbing, showers, wallpapers, windows, stoneware, bever, leftArrow, rightArrow };
+export {
+    mapcheck, logo, cart, catalog, orders, profile, specialoffers, sale, search, arrow,
+    doors, electricalGoods, goodsForGiving, instrument, interior, linoleum, lumber,
+    paints, plumbing, showers, wallpapers, windows, stoneware, bever, leftArrow, rightArrow,
+    cherepica, pena, ruberoid, setka, avatar, commas, about, footer_location, footer_logo,
+    footer_message, maestro, mastercard, visa, mir
+};

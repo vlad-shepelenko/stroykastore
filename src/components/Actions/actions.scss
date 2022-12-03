@@ -1,0 +1,153 @@
+@import "../../assets/styles/global_style.scss";
+
+.actions_container {
+  width: 100%;
+}
+
+.header_actions {
+  margin: 0 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title_actions {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 44px;
+  color: #2f323a;
+}
+
+.all_actions {
+  display: flex;
+  justify-content: center;
+  height: 48px;
+  width: 160px;
+  background: #ffffff;
+  border: 1px solid #d1d1d3;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #171b24;
+  align-items: center;
+  gap: 17px;
+}
+
+.content_actions {
+  margin-left: 7%;
+  margin-right: 7%;
+  display: flex;
+}
+
+.cart_action {
+  display: flex;
+  flex-direction: row;
+  width: 572px;
+  height: 208px;
+  box-sizing: border-box;
+  border: 1px solid #e8e9ea;
+}
+
+.cart_action_name {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2f323a;
+}
+
+.cart_action_container {
+  display: flex;
+  flex-direction: column;
+  width: 294px;
+  gap: 16px;
+  border-left: 1px solid #e8e9ea;
+}
+
+.cart_action_price {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.cart_action_newprice {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  color: #171b24;
+}
+
+.cart_action_oldprice {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #8b8d92;
+  text-decoration: line-through;
+}
+
+.cart_action_desccription {
+  display: flex;
+  flex-direction: column;
+  height: 112px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 16px;
+  justify-content: space-between;
+}
+
+.cart_butoon {
+  width: 262px;
+  height: 48px;
+  background-color: #fcec41;
+  border: none;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #171b24;
+}
+
+.cart_action_button {
+  display: flex;
+  justify-content: center;
+}
+
+.image_action {
+  height: 206px;
+}
+
+.content_actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.action_amount {
+  display: flex;
+  width: 55px;
+  height: 30px;
+  border: 2px solid #fbe303;
+  background-color: #ffffff;
+  position: absolute;
+  margin-left: 16px;
+  margin-top: 16px;
+  justify-content: center;
+  align-items: center;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+}

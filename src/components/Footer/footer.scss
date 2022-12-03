@@ -1,0 +1,85 @@
+@import "../../assets/styles/global_style.scss";
+
+.footer_section {
+  display: flex;
+  width: 100%;
+  height: 285px;
+  background-color: #2f323a;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer_text {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #e8e9ea;
+}
+
+.footer_mail {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.footer_location {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.footer_company {
+  display: flex;
+  margin-left: 140px;
+}
+
+.footer_contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer_logo {
+  width: 180px;
+  height: 46px;
+}
+
+.footer_navigation {
+  display: flex;
+  gap: 16px;
+}
+.footer_column {
+  display: flex;
+  flex-direction: column;
+  width: 278px;
+  gap: 12px;
+}
+
+.footer_nav_container {
+  display: flex;
+  gap: 114px;
+  padding-top: 40px;
+  padding-bottom: 24px;
+}
+
+.footer_payments {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer_info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 140px;
+  margin-right: 140px;
+}
+
+.footer_divide_line {
+  width: 1160px;
+}
