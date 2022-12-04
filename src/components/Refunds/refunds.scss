@@ -1,0 +1,86 @@
+@import "../../assets/styles/global_style.scss";
+
+.refunds_banner {
+  margin-left: 40px;
+  background: url("../../assets/images/refunds.svg") #f6f6f6;
+  width: 1360px;
+  height: 312px;
+}
+
+.refunds_banner_navigation {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #454950;
+}
+
+.refunds_banner_title {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 58px;
+  color: #171b24;
+  margin: 0;
+}
+
+.refunds_banner_description {
+  width: 520px;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #2f323a;
+}
+
+.refunds_banner_content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 0 0 100px;
+}
+
+.refunds_types_container {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin-left: 140px;
+}
+
+.refunds_type {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.refunds_types_title {
+  width: 376px;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 44px;
+  color: #2f323a;
+  margin: 0;
+}
+
+.refunds_types_text {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2f323a;
+  width: 768px;
+}
+
+.refunds_container {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin-top: 40px;
+  margin-bottom: 80px;
+}

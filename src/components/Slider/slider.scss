@@ -8,6 +8,7 @@
 .epKbGN {
   justify-content: flex-end !important;
   gap: 12px !important;
+  width: 30%;
   padding: 0rem 9rem !important;
   top: auto;
 }
@@ -23,6 +24,8 @@
 
 .slider_container {
   display: block;
+  padding-top: 40px;
+  padding-left: 40px;
 }
 
 [data-testid="indicatorContainer"] {
@@ -102,6 +105,7 @@ button[aria-label="forwardButton"] {
 @media screen and (max-width: 1440px) {
   .epKbGN {
     margin-top: 330px;
+    margin-left: 67%;
   }
   .slider_container {
     display: block;

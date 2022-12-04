@@ -1,0 +1,120 @@
+@import "../../assets/styles/global_style.scss";
+
+.banner_allbrands {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 1360px;
+  height: 232px;
+  margin-top: 40px;
+  margin-left: 40px;
+  background: url("../../assets/images/allbrands.svg");
+}
+
+.banner_navigation_text {
+  padding-top: 40px;
+  padding-left: 100px;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #454950;
+}
+
+.all_brands_text {
+  margin: 0;
+  padding-left: 100px;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 58px;
+  color: #171b24;
+}
+
+.button_all_brands {
+  border: none;
+  background: #fbe303;
+  width: 60px;
+  height: 36px;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #171b24;
+}
+
+.button_letter_brandes {
+  width: 36px;
+  height: 36px;
+  background: $white;
+  border: 1px solid #d1d1d3;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #171b24;
+}
+
+.brands_letters_container {
+  margin-left: 140px;
+  margin-right: 140px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.allbrands_section {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-bottom: 80px;
+}
+
+.brands_letter_container {
+  margin: 0 140px;
+}
+
+.brand_letter_container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.title_letter_text {
+  display: flex;
+  width: 180px !important;
+  font-family: $font;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 44px;
+  color: #333333;
+  margin: 0;
+}
+
+.brands_name_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand_name_text {
+  width: 180px;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2f323a;
+}
+
+.brands_container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}

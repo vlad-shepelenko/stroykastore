@@ -1,0 +1,163 @@
+@import "../../assets/styles/global_style.scss";
+
+.delivery_banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  margin-left: 40px;
+  width: 1360px;
+  height: 312px;
+  background: url("../../assets/images/delivery.svg");
+}
+
+.banner_delivery_text {
+  margin-left: 100px;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #454950;
+}
+
+.banner_delivery_title {
+  margin: 0 0 0 100px;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 58px;
+  color: #171b24;
+}
+
+.banner_delivery_description {
+  margin-left: 100px;
+  display: flex;
+  width: 520px;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #2f323a;
+}
+
+.delivery_howto_cart {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 278px;
+}
+
+.delivery_image {
+  width: 80px;
+  height: 80px;
+}
+
+.delivery_howto_container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-left: 140px;
+}
+
+.delivery_howto_description {
+  font-family: $font;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2f323a;
+}
+
+.delivery_howto_steps {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.delivery_howto_title {
+  margin: 0;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 44px;
+  color: #2f323a;
+}
+
+.ant-collapse-header-text {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #2f323a;
+}
+
+.ant-collapse,
+.ant-collapse-content,
+.ant-collapse > .ant-collapse-item,
+.ant-collapse-content-active {
+  border: none !important;
+}
+
+.delivery_answer {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2f323a;
+  margin-left: 27px;
+}
+
+.ant-collapse {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: $white;
+}
+
+.ant-collapse-item,
+.ant-collapse-content-box {
+  background-color: #f6f6f6;
+}
+
+.delivery_faq_container {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 1160px;
+  margin-left: 140px;
+  min-height: 920px;
+  border: 1px solid #d1d1d3;
+}
+
+.deilvery_faq_title {
+  margin: 0;
+  width: 768px;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 44px;
+  color: #2f323a;
+}
+
+.delivery_faq_content {
+  width: 768px;
+}
+
+.ant-collapse-content > .ant-collapse-content-box {
+  padding: 16px 39px;
+}
+
+.delivery_section_container {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin: 40px 0 80px 0;
+}

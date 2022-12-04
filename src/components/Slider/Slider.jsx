@@ -5,7 +5,7 @@ import { specialoffers, sale } from "../../assets/images";
 const Slider = () => {
   return (
     <>
-      <div className="slider_container">
+      <div id="slider_component" className="slider_container">
         <ImageSlider effectDelay={500} autoPlayDelay={5000}>
           <Slide>
             <div className="container_image">

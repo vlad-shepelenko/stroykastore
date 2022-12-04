@@ -7,7 +7,6 @@ import {
   catalog,
   mapcheck,
 } from "../../assets/images";
-import { Slider } from "../../components/Slider";
 import { useState, useEffect, useRef } from "react";
 import useResizeObserver from "@react-hook/resize-observer";
 import { useLayoutEffect } from "react";
@@ -200,13 +199,6 @@ const Header = () => {
         </section>
         <hr className="dividing_line" />
       </header>
-      {showSlider ? (
-        <Slider className="slider_display" />
-      ) : (
-        <div style={{ display: "none" }}>
-          <Slider />
-        </div>
-      )}
     </>
   );
 };

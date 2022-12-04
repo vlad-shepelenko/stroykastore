@@ -38,11 +38,22 @@ import maestro from './maestro.svg'
 import mastercard from './mastercard.svg'
 import visa from './visa.svg'
 import mir from './mir.svg'
+import allbrands from './allbrands.svg'
+import delivery from './delivery.svg'
+import deliverycart from './deliverycart.svg'
+import deliverynotification from './deliverynotification.svg'
+import deliverybox from './deliverybox.svg'
+import deliverymap from './deliverymap.svg'
+import refunds from './refunds.svg'
+import safedeal from './safedeal.svg'
+import privacypolicy from './privacypolicy.svg'
+import oferta from './oferta.svg'
 
 export {
     mapcheck, logo, cart, catalog, orders, profile, specialoffers, sale, search, arrow,
     doors, electricalGoods, goodsForGiving, instrument, interior, linoleum, lumber,
     paints, plumbing, showers, wallpapers, windows, stoneware, bever, leftArrow, rightArrow,
     cherepica, pena, ruberoid, setka, avatar, commas, about, footer_location, footer_logo,
-    footer_message, maestro, mastercard, visa, mir
+    footer_message, maestro, mastercard, visa, mir, allbrands, delivery, deliverycart,
+    deliverynotification, deliverybox, deliverymap, refunds, safedeal, privacypolicy, oferta
 };
