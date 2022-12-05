@@ -1,0 +1,89 @@
+@import "../../assets/styles/global_style.scss";
+
+.catalog_banner {
+  background: url("../../assets/images/catalogbanner.svg");
+  width: 1360px;
+  height: 232px;
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.catalog_navigation {
+  margin: 40px 0 0 100px;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #454950;
+}
+
+.catalog_title {
+  margin: 0 0 0 100px;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 58px;
+  color: #171b24;
+}
+
+.catalog_cart_container {
+  margin-top: 80px;
+  width: 278px;
+  height: 476px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.catalog_image_container {
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background-color: #f6f6f6;
+}
+
+.catalog_category_image {
+  width: 180px;
+}
+
+.catalog_category_title {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #2f323a;
+}
+
+.catalog_category_text {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2f323a;
+}
+
+.catalog_categories {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.catalog_categories_container {
+  margin-left: 140px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.catalog_section {
+  margin: 40px 0 80px 0;
+}

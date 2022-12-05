@@ -1,4 +1,4 @@
-import { Home, Brands, Delivery, Refunds, Documentation, Contacts } from './pages/index'
+import { Home, Brands, Delivery, Refunds, Documentation, Contacts, Profile, Catalog, Category } from './pages/index'
 import './assets/styles/global_style.scss'
 
 function App() {
@@ -9,7 +9,10 @@ function App() {
       {/*<Delivery />*/}
       {/*<Refunds />*/}
       {/*<Documentation />*/}
-      <Contacts />
+      {/*<Contacts />*/}
+      {/*<Profile />*/}
+      {/*<Catalog />*/}
+      <Category />
     </div>
   );
 }

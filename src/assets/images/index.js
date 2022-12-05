@@ -48,6 +48,9 @@ import refunds from './refunds.svg'
 import safedeal from './safedeal.svg'
 import privacypolicy from './privacypolicy.svg'
 import oferta from './oferta.svg'
+import catalogbanner from './catalogbanner.svg'
+import catalogcategory from './catalogcategory.svg'
+import productCategory from './productCategory.svg'
 
 export {
     mapcheck, logo, cart, catalog, orders, profile, specialoffers, sale, search, arrow,
@@ -55,5 +58,6 @@ export {
     paints, plumbing, showers, wallpapers, windows, stoneware, bever, leftArrow, rightArrow,
     cherepica, pena, ruberoid, setka, avatar, commas, about, footer_location, footer_logo,
     footer_message, maestro, mastercard, visa, mir, allbrands, delivery, deliverycart,
-    deliverynotification, deliverybox, deliverymap, refunds, safedeal, privacypolicy, oferta
+    deliverynotification, deliverybox, deliverymap, refunds, safedeal, privacypolicy, oferta,
+    catalogbanner, catalogcategory, productCategory
 };
