@@ -7,5 +7,7 @@ import Contacts from './Contacts/ContactsPage'
 import Profile from './Profile/ProfilePage'
 import Catalog from './Catalog/CatalogPage'
 import Category from './Category/CategoryPage'
+import Product from './Product/ProductPage'
+import Orders from './Orders/OrdersPage'
 
-export { Home, Brands, Delivery, Refunds, Documentation, Contacts, Profile, Catalog, Category } 
+export { Home, Brands, Delivery, Refunds, Documentation, Contacts, Profile, Catalog, Category, Product, Orders } 

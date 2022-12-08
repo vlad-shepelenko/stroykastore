@@ -1,10 +1,13 @@
 import "./category.scss";
-import { Slider, Select, Pagination } from "antd";
+import { Slider, Select, Pagination, Checkbox } from "antd";
 import { Divider } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { productCategoryData } from "../../assets/data";
 
 const CategoryComponent = () => {
+  const onChange = (e) => {
+    console.log(`checked = ${e.target.checked}`);
+  };
   const data = [
     "Test",
     "Test",
@@ -33,123 +36,181 @@ const CategoryComponent = () => {
         </div>
         <div className="category_products_section">
           <div className="category_products_filter">
-            <label className="category_products_filter_label">Цена</label>
-            <div className="category_products_filter_price_container">
-              <input
-                className="category_products_filter_price_input"
-                type="text"
-              />
-              <input
-                className="category_products_filter_price_input"
-                type="text"
-              />
-            </div>
-            <Slider
-              range={{
-                draggableTrack: true,
-              }}
-              defaultValue={[20, 50]}
-            />
-            <div className="category_products_filter_brand">
-              <span className="category_products_filter_label">Бренд</span>
-              <input
-                className="category_products_filter_search"
-                type="search"
-                placeholder="Поиск"
-              />
-              <div>
-                <div
-                  id="scrollableDiv"
-                  style={{
-                    height: 400,
-                    overflow: "auto",
-                    padding: "0 16px",
-                    border: "1px solid rgba(140, 140, 140, 0.35)",
+            <section className="category_filter_section">
+              <section className="category_filter_price">
+                <label className="category_products_filter_label">Цена</label>
+                <div className="category_products_filter_price_container">
+                  <input
+                    className="category_products_filter_price_input"
+                    type="text"
+                    placeholder="10"
+                  />
+                  <input
+                    className="category_products_filter_price_input"
+                    type="text"
+                    placeholder="1000"
+                  />
+                </div>
+                <Slider
+                  range={{
+                    draggableTrack: true,
                   }}
-                >
-                  <InfiniteScroll
-                    dataLength={data.length}
-                    hasMore={data.length < 50}
-                    endMessage={
-                      <Divider plain>It is all, nothing more 🤐</Divider>
-                    }
-                    scrollableTarget="scrollableDiv"
+                  defaultValue={[20, 50]}
+                />
+              </section>
+              <div className="category_products_filter_brand">
+                <span className="category_products_filter_label">Бренд</span>
+                <input
+                  className="category_products_filter_search"
+                  type="search"
+                  placeholder="Поиск"
+                />
+                <div>
+                  <div
+                    id="scrollableDiv"
+                    style={{
+                      height: 400,
+                      overflow: "auto",
+                      padding: "0 16px",
+                      borderTop: "1px solid rgba(140, 140, 140, 0.35)",
+                      borderBottom: "1px solid rgba(140, 140, 140, 0.35)",
+                    }}
                   >
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                    <div>Jopa</div>
-                  </InfiniteScroll>
+                    <InfiniteScroll
+                      dataLength={data.length}
+                      hasMore={data.length < 50}
+                      endMessage={
+                        <Divider plain>It is all, nothing more 🤐</Divider>
+                      }
+                      scrollableTarget="scrollableDiv"
+                    >
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                      <div className="brand_name_filter">
+                        <Checkbox onChange={onChange}>Jopa</Checkbox>
+                      </div>
+                    </InfiniteScroll>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="category_products_filter_provider">
-              <span className="category_products_filter_label">Поставщик</span>
-              <Select
-                showSearch
-                style={{
-                  width: 200,
-                }}
-                placeholder="Search to Select"
-                optionFilterProp="children"
-                filterOption={(input, option) =>
-                  (option?.label ?? "").includes(input)
-                }
-                filterSort={(optionA, optionB) =>
-                  (optionA?.label ?? "")
-                    .toLowerCase()
-                    .localeCompare((optionB?.label ?? "").toLowerCase())
-                }
-                options={[
-                  {
-                    value: "1",
-                    label: "Not Identified",
-                  },
-                  {
-                    value: "2",
-                    label: "Closed",
-                  },
-                  {
-                    value: "3",
-                    label: "Communicated",
-                  },
-                  {
-                    value: "4",
-                    label: "Identified",
-                  },
-                  {
-                    value: "5",
-                    label: "Resolved",
-                  },
-                  {
-                    value: "6",
-                    label: "Cancelled",
-                  },
-                ]}
-              />
-            </div>
-            <hr />
-            <button className="category_products_button_apply">
-              Применить
-            </button>
-            <button className="category_products_button_clear">Сбросить</button>
+              <div className="category_products_filter_provider">
+                <span className="category_products_filter_label">
+                  Поставщик
+                </span>
+                <Select
+                  showSearch
+                  style={{
+                    width: 200,
+                  }}
+                  placeholder="Search to Select"
+                  optionFilterProp="children"
+                  filterOption={(input, option) =>
+                    (option?.label ?? "").includes(input)
+                  }
+                  filterSort={(optionA, optionB) =>
+                    (optionA?.label ?? "")
+                      .toLowerCase()
+                      .localeCompare((optionB?.label ?? "").toLowerCase())
+                  }
+                  options={[
+                    {
+                      value: "1",
+                      label: "Not Identified",
+                    },
+                    {
+                      value: "2",
+                      label: "Closed",
+                    },
+                    {
+                      value: "3",
+                      label: "Communicated",
+                    },
+                    {
+                      value: "4",
+                      label: "Identified",
+                    },
+                    {
+                      value: "5",
+                      label: "Resolved",
+                    },
+                    {
+                      value: "6",
+                      label: "Cancelled",
+                    },
+                  ]}
+                />
+              </div>
+            </section>
+            <div className="category_filter_divider" />
+            <section className="category_filter_buttons">
+              <button className="category_products_button_apply">
+                Применить
+              </button>
+              <button className="category_products_button_clear">
+                Сбросить
+              </button>
+            </section>
           </div>
           <div className="category_products_container">
             <div className="category_products_sort">

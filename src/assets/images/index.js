@@ -51,6 +51,8 @@ import oferta from './oferta.svg'
 import catalogbanner from './catalogbanner.svg'
 import catalogcategory from './catalogcategory.svg'
 import productCategory from './productCategory.svg'
+import deliveryProduct from './deliveryProduct.svg'
+import ordersBanner from './ordersBanner.svg'
 
 export {
     mapcheck, logo, cart, catalog, orders, profile, specialoffers, sale, search, arrow,
@@ -59,5 +61,5 @@ export {
     cherepica, pena, ruberoid, setka, avatar, commas, about, footer_location, footer_logo,
     footer_message, maestro, mastercard, visa, mir, allbrands, delivery, deliverycart,
     deliverynotification, deliverybox, deliverymap, refunds, safedeal, privacypolicy, oferta,
-    catalogbanner, catalogcategory, productCategory
+    catalogbanner, catalogcategory, productCategory, deliveryProduct, ordersBanner
 };
