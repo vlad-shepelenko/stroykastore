@@ -73,7 +73,6 @@
 }
 
 .documentation_title {
-  margin-left: 140px;
   margin: 20px 0 0 140px;
   font-family: $font;
   font-style: normal;
@@ -86,4 +85,57 @@
 .documentation_container {
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 1024px) {
+  .documentation_navigation {
+    margin: 30px 0 0 79px;
+  }
+
+  .documentation_title {
+    margin: 20px 0 0 79px;
+  }
+
+  .documentation_image {
+    width: 280px;
+  }
+
+  .content_image_documentation {
+    width: 280px;
+  }
+
+  .documentation_description {
+    width: 278px;
+  }
+  .documentation_name {
+    width: 246px;
+  }
+
+  .documentation_size {
+    width: 246px;
+  }
+
+  .download_documentation {
+    width: 246px;
+  }
+
+  .documentation_carts_container {
+    margin: 30px 79px 60px 79px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .documentation_navigation {
+    margin: 30px 0 0 98px;
+  }
+
+  .documentation_title {
+    margin: 20px 0 0 98px;
+  }
+
+  .documentation_carts_container {
+    margin: 30px 98px 60px 98px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
 }

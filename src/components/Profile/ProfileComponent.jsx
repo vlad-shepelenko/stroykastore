@@ -60,7 +60,7 @@ const ProfileComponent = () => {
                 <input
                   className="medium_input"
                   type="password"
-                  placeholder="пароль   "
+                  placeholder="пароль"
                 />
               </div>
               <div className="profile_user_container">

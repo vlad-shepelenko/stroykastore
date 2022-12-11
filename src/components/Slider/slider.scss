@@ -8,7 +8,7 @@
 .epKbGN {
   justify-content: flex-end !important;
   gap: 12px !important;
-  width: 30%;
+  width: 30% !important;
   padding: 0rem 9rem !important;
   top: auto;
 }
@@ -105,7 +105,8 @@ button[aria-label="forwardButton"] {
 @media screen and (max-width: 1440px) {
   .epKbGN {
     margin-top: 330px;
-    margin-left: 67%;
+    margin-left: 58.5%;
+    padding: 0 !important;
   }
   .slider_container {
     display: block;
@@ -113,18 +114,24 @@ button[aria-label="forwardButton"] {
 }
 
 @media screen and (max-width: 1024px) {
+  .slider_container {
+    padding-top: 30px;
+    padding-left: 79px;
+  }
+
   .container_image {
     height: 360px;
   }
 
   .hOQiSy {
     height: 360px !important;
-    width: 87vw !important;
+    width: 866px !important;
   }
 
   .epKbGN {
+    width: 15% !important;
     margin-top: 272px;
-    padding: 0rem 12rem !important;
+    margin-left: 65%;
   }
 
   .slider_image {
@@ -141,12 +148,17 @@ button[aria-label="forwardButton"] {
 
 @media screen and (max-width: 768px) {
   .hOQiSy {
-    height: 360px;
+    height: 360px !important;
+    width: 572px !important;
+  }
+
+  .slider_container {
+    padding-left: 98px;
   }
 
   .epKbGN {
-    margin-top: 268px;
-    padding: 0rem 9rem !important;
+    margin-top: 272px;
+    margin-left: 55%;
   }
 
   .slider_container_text {

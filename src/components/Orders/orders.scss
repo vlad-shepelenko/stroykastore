@@ -139,3 +139,60 @@
   flex-direction: column;
   gap: 16px;
 }
+
+@media screen and (max-width: 1024px) {
+  .orders_banner {
+    width: 866px;
+    margin: 0 79px;
+  }
+
+  .orders_navigations {
+    margin: 40px 0 0 41px;
+  }
+
+  .orders_banner_title {
+    margin: 0 0 0 41px;
+  }
+
+  .order {
+    margin: 0 79px;
+    width: 866px;
+    height: 134px;
+  }
+
+  .order_description {
+    width: 310px;
+    gap: 1px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .orders_banner {
+    width: 572px;
+    margin: 0 98px;
+  }
+
+  .order {
+    width: 572px;
+    height: 181px;
+    margin: 0 98px;
+  }
+
+  .order_image {
+    width: 176px;
+    display: flex;
+    align-self: center;
+  }
+
+  .order_description {
+    padding-right: 16px;
+    width: 212px;
+    height: auto;
+  }
+
+  .order_status_container {
+    width: 179px;
+    flex-direction: column;
+    gap: 33px;
+  }
+}

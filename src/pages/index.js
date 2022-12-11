@@ -9,5 +9,8 @@ import Catalog from './Catalog/CatalogPage'
 import Category from './Category/CategoryPage'
 import Product from './Product/ProductPage'
 import Orders from './Orders/OrdersPage'
+import Cart from './Cart/CartPage'
+import NotFound from './NotFound/NotFoundPage'
+import Thanks from './Thanks/ThanksPage'
 
-export { Home, Brands, Delivery, Refunds, Documentation, Contacts, Profile, Catalog, Category, Product, Orders } 
+export { Home, Brands, Delivery, Refunds, Documentation, Contacts, Profile, Catalog, Category, Product, Orders, Cart, NotFound, Thanks } 

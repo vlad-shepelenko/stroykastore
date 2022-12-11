@@ -8,7 +8,10 @@ import {
   maestro,
   mir,
 } from "../../assets/images";
+import { useNavigate } from "react-router-dom";
+
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <>
       <section className="footer_section">
@@ -16,52 +19,69 @@ const Footer = () => {
           <div className="footer_company">
             <div className="footer_contacts">
               <img className="footer_logo" src={footer_logo} alt="Logo"></img>
-              <div className="footer_mail">
-                <img src={footer_message} alt="e-mail"></img>
-                <span className="footer_text">info@stroykastore.ru</span>
-              </div>
-              <div className="footer_location">
-                <img src={footer_location} alt="location"></img>
-                <span className="footer_text">Москва, ул. Камушкина 10</span>
+              <div className="footer_tablet">
+                <div className="footer_mail">
+                  <img src={footer_message} alt="e-mail"></img>
+                  <span className="footer_text">info@stroykastore.ru</span>
+                </div>
+                <div className="footer_location">
+                  <img src={footer_location} alt="location"></img>
+                  <span className="footer_text">Москва, ул. Камушкина 10</span>
+                </div>
               </div>
             </div>
           </div>
           <div className="footer_navigation">
             <div className="footer_column">
-              <a className="footer_text" href="google.com">
+              <span
+                onClick={() => navigate("/profile")}
+                className="footer_text"
+              >
                 Личный кабинет
-              </a>
-              <a className="footer_text" href="google.com">
+              </span>
+              <span onClick={() => navigate("/orders")} className="footer_text">
                 Заказы
-              </a>
-              <a className="footer_text" href="google.com">
+              </span>
+              <span onClick={() => navigate("/cart")} className="footer_text">
                 Корзина
-              </a>
-              <a className="footer_text" href="google.com">
+              </span>
+              <span
+                onClick={() => navigate("/catalog")}
+                className="footer_text"
+              >
                 Каталог
-              </a>
+              </span>
             </div>
             <div className="footer_column">
-              <a className="footer_text" href="google.com">
-                Акции
-              </a>
-              <a className="footer_text" href="google.com">
+              <span onClick={() => navigate("/brands")} className="footer_text">
                 Бренды
-              </a>
-              <a className="footer_text" href="google.com">
+              </span>
+              <span
+                onClick={() => navigate("/contacts")}
+                className="footer_text"
+              >
                 Контакты
-              </a>
-              <a className="footer_text" href="google.com">
+              </span>
+              <span
+                onClick={() => navigate("/delivery")}
+                className="footer_text"
+              >
                 Доставка
-              </a>
+              </span>
+              <span
+                onClick={() => navigate("/refunds")}
+                className="footer_text"
+              >
+                Возврат
+              </span>
             </div>
             <div className="footer_column">
-              <a className="footer_text" href="google.com">
-                Возврат
-              </a>
-              <a className="footer_text" href="google.com">
+              <span
+                onClick={() => navigate("/documentation")}
+                className="footer_text"
+              >
                 Документация
-              </a>
+              </span>
             </div>
           </div>
         </div>

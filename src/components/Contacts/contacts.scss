@@ -77,3 +77,31 @@
   flex-direction: column;
   gap: 40px;
 }
+
+@media screen and (max-width: 1024px) {
+  .contacts_section {
+    width: 866px;
+    margin-bottom: 60px;
+  }
+  .contacts_map {
+    width: 866px;
+  }
+
+  .about_container {
+    padding-left: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contacts_section {
+    width: 569px;
+  }
+
+  .contacts_map {
+    width: 572px;
+  }
+
+  .contacts_company_properties_container {
+    flex-wrap: wrap;
+  }
+}

@@ -1,6 +1,9 @@
 import "./navbar.scss";
 import { mapcheck } from "../../assets/images";
+import { useNavigate } from "react-router-dom";
+
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <>
       <nav>
@@ -10,14 +13,39 @@ const Navbar = () => {
               Location
             </object>
           </span>
-          <a href="google.com">Город</a>
+          <span className="navigation_button">Город</span>
         </div>
         <div className="navigation">
-          <a href="google.com">Бренды</a>
-          <a href="google.com">Доставка</a>
-          <a href="google.com">Возврат</a>
-          <a href="google.com">Документация</a>
-          <a href="google.com">Контакты</a>
+          <span
+            className="navigation_button"
+            onClick={() => navigate("/brands")}
+          >
+            Бренды
+          </span>
+          <span
+            className="navigation_button"
+            onClick={() => navigate("/delivery")}
+          >
+            Доставка
+          </span>
+          <span
+            className="navigation_button"
+            onClick={() => navigate("/refunds")}
+          >
+            Возврат
+          </span>
+          <span
+            className="navigation_button"
+            onClick={() => navigate("/documentation")}
+          >
+            Документация
+          </span>
+          <span
+            className="navigation_button"
+            onClick={() => navigate("/contacts")}
+          >
+            Контакты
+          </span>
         </div>
       </nav>
     </>

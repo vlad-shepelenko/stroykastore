@@ -10,6 +10,8 @@ import {
 import { useState, useEffect, useRef } from "react";
 import useResizeObserver from "@react-hook/resize-observer";
 import { useLayoutEffect } from "react";
+import { Modal } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const useSize = (target) => {
   const [size, setSize] = useState();
@@ -22,10 +24,21 @@ const useSize = (target) => {
 };
 
 const Header = () => {
+  const navigate = useNavigate();
+  const [login, setLogin] = useState(false);
+  const [registrarion, setRegistration] = useState(false);
   const [showMenu, setShowMenu] = useState(true);
   const [showSlider, setShowSlider] = useState(true);
   const target = useRef(null);
   const size = useSize(target);
+
+  const handleCancel = () => {
+    setLogin(false);
+  };
+
+  const handldeCancelRegistraton = () => {
+    setRegistration(false);
+  };
 
   useEffect(() => {
     if (size !== undefined && size.width < 1000 && size.width > 680) {
@@ -56,10 +69,8 @@ const Header = () => {
               alt="catalog"
             />
             <section onClick={handleClick} className="logo">
-              <span>
-                <object data={logo} type="image/svg+xml">
-                  Logo
-                </object>
+              <span onClick={() => navigate("/home")}>
+                <img onClick={() => navigate("/home")} src={logo} alt="Logo" />
               </span>
             </section>
             <section className="buttons">
@@ -80,35 +91,31 @@ const Header = () => {
                 className="search_button"
               ></input>
               <div className="buttons_section">
-                <div className="button_unit">
-                  <object
-                    data={profile}
-                    type="image/svg+xml"
+                <div onClick={() => setLogin(true)} className="button_unit">
+                  <img
+                    onClick={() => setLogin(true)}
+                    src={profile}
                     className="button_unit_image"
+                    alt="profile"
+                  />
+                  <span
+                    className="button_unit_text"
+                    onClick={() => setLogin(true)}
                   >
-                    Profile
-                  </object>
-                  <span>Профиль</span>
+                    Профиль
+                  </span>
                 </div>
                 <div className="button_unit">
-                  <object
-                    data={orders}
-                    type="image/svg+xml"
+                  <img
+                    src={orders}
                     className="button_unit_image"
-                  >
-                    Orders
-                  </object>
-                  <span>Заказы</span>
+                    alt="orders"
+                  />
+                  <span className="button_unit_text">Заказы</span>
                 </div>
                 <div className="button_unit">
-                  <object
-                    data={cart}
-                    type="image/svg+xml"
-                    className="button_unit_image"
-                  >
-                    Cart
-                  </object>
-                  <span>Корзина</span>
+                  <img src={cart} className="button_unit_image" alt="cart" />
+                  <span className="button_unit_text">Корзина</span>
                 </div>
               </div>
             </section>
@@ -149,7 +156,7 @@ const Header = () => {
               >
                 Profile
               </object>
-              <span>Профиль</span>
+              <span className="button_unit_text">Профиль</span>
             </div>
             <div className="button_unit">
               <object
@@ -159,7 +166,7 @@ const Header = () => {
               >
                 Orders
               </object>
-              <span>Заказы</span>
+              <span className="button_unit_text">Заказы</span>
             </div>
           </section>
           <section className="city_menu_section">
@@ -199,6 +206,83 @@ const Header = () => {
         </section>
         <hr className="dividing_line" />
       </header>
+      <Modal centered open={login} onCancel={handleCancel} width={376}>
+        <h2 className="login_title">Вход</h2>
+        <div className="login_section">
+          <span className="input_label">E-mail</span>
+          <input
+            className="input_email"
+            type="email"
+            placeholder="yourmail@mail.com"
+          />
+        </div>
+        <div className="password_section">
+          <span className="input_label">Пароль</span>
+          <input
+            className="input_password"
+            type="password"
+            placeholder="пароль"
+          />
+        </div>
+        <div className="login_buttons_section">
+          <button className="login_button_enter">Войти</button>
+          <button
+            onClick={() => setRegistration(true)}
+            className="login_button_create"
+          >
+            Создать учетную запись
+          </button>
+        </div>
+      </Modal>
+      <Modal
+        centered
+        open={registrarion}
+        onCancel={handldeCancelRegistraton}
+        width={572}
+      >
+        <h2 className="registration_title">Регистрация</h2>
+        <div className="registration_section">
+          <div className="registation">
+            <span className="input_label">Имя</span>
+            <input
+              className="input_registration"
+              type="text"
+              placeholder="Иннокентий"
+            />
+          </div>
+          <div className="registation">
+            <span className="input_label">E-mail</span>
+            <input
+              className="input_registration"
+              type="email"
+              placeholder="yourmail@mail.com"
+            />
+          </div>
+        </div>
+        <div className="registration_section">
+          <div className="registation">
+            <span className="input_label">Новый пароль</span>
+            <input
+              className="input_registration"
+              type="password"
+              placeholder="пароль"
+            />
+          </div>
+          <div className="registation">
+            <span className="input_label">Подтверждение пароля</span>
+            <input
+              className="input_registration"
+              type="password"
+              placeholder="пароль"
+            />
+          </div>
+        </div>
+        <div className="login_buttons_section">
+          <button className="registration_button_enter">
+            Зарегистрироваться
+          </button>
+        </div>
+      </Modal>
     </>
   );
 };

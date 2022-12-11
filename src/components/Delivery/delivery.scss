@@ -59,7 +59,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding-left: 140px;
+  margin-left: 140px;
 }
 
 .delivery_howto_description {
@@ -160,4 +160,60 @@
   flex-direction: column;
   gap: 80px;
   margin: 40px 0 80px 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .delivery_banner {
+    width: 866px;
+    background-size: cover;
+    margin: 0 79px;
+  }
+
+  .delivery_howto_container {
+    margin: 0 79px;
+  }
+
+  .delivery_faq_container {
+    width: 866px;
+    margin: 0 79px;
+  }
+
+  .banner_delivery_text,
+  .banner_delivery_title,
+  .banner_delivery_description {
+    margin-left: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .delivery_banner {
+    margin: 0 98px;
+    width: 572px;
+    background-size: cover;
+  }
+
+  .delivery_howto_container {
+    margin: 0 98px;
+  }
+
+  .delivery_howto_steps {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .delivery_faq_container {
+    margin: 0 98px;
+    width: 572px;
+    justify-content: flex-start;
+    border: none;
+    min-height: auto;
+  }
+
+  .deilvery_faq_title {
+    width: 572px;
+  }
+
+  .delivery_faq_content {
+    width: 572px;
+  }
 }

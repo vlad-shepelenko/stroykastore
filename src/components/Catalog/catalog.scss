@@ -87,3 +87,33 @@
 .catalog_section {
   margin: 40px 0 80px 0;
 }
+
+@media screen and (max-width: 1024px) {
+  .catalog_banner {
+    width: 866px;
+    margin: 0 79px;
+  }
+
+  .catalog_navigation {
+    margin: 40px 0 0 40px;
+  }
+
+  .catalog_title {
+    margin: 0 0 0 40px;
+  }
+
+  .catalog_categories_container {
+    margin: 0 79px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .catalog_banner {
+    width: 572px;
+    margin: 0 98px;
+  }
+
+  .catalog_categories_container {
+    margin: 0 98px;
+  }
+}

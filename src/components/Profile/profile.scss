@@ -120,3 +120,35 @@
 .profile_title_content {
   width: 696px;
 }
+
+@media screen and (max-width: 768px) {
+  .profile_container {
+    width: 568px;
+    margin: 30px 98px 59px 98px;
+  }
+
+  .profile_title_container {
+    width: 568px;
+  }
+
+  .profile_container_content {
+    width: 568px;
+  }
+
+  .profile_title_content {
+    width: 500px;
+  }
+
+  .profile_user_information_container {
+    width: 500px;
+  }
+
+  .profile_user_container,
+  .medium_input {
+    width: 242px;
+  }
+
+  .large_input {
+    width: 500px;
+  }
+}

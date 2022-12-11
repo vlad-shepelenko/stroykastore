@@ -21,7 +21,7 @@ header {
 }
 
 .logo {
-  margin-left: 7%;
+  margin-left: 140px;
 }
 
 .buttons_section {
@@ -90,7 +90,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-right: 7%;
+  margin-right: 140px;
   width: 866px;
   min-width: 46.53%;
   gap: 16px;
@@ -130,7 +130,7 @@ ul {
   width: 100%;
 }
 .nav_menu > ul {
-  margin: 0 7%;
+  margin: 0 140px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -153,9 +153,157 @@ ul {
   display: flex;
 }
 
+.login_title,
+.registration_title {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 44px;
+  color: #2f323a;
+  margin-bottom: 0;
+}
+
+.login_section,
+.password_section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input_label {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2f323a;
+}
+
+.input_email,
+.input_password {
+  width: 304px;
+  height: 48px;
+  background: #f6f6f6;
+  border: none;
+  border-bottom: 1px solid #d1d1d3;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #8b8d92;
+  text-indent: 16px;
+}
+
+.login_button_enter {
+  width: 304px;
+  height: 48px;
+  border: none;
+  background: #fcec41;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #171b24;
+}
+
+.login_button_create {
+  width: 304px;
+  height: 48px;
+  border: 1px solid #d1d1d3;
+  background: #ffffff;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #171b24;
+}
+
+.ant-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.login_buttons_section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.ant-btn {
+  display: none !important;
+}
+
+.ant-modal-content {
+  border-radius: 0px !important;
+}
+
+.button_unit_text {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  color: #454950;
+  line-height: 24px;
+}
+
+.input_registration {
+  width: 242px;
+  height: 48px;
+  background: #f6f6f6;
+  border: none;
+  border-bottom: 1px solid #d1d1d3;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #8b8d92;
+  text-indent: 16px;
+}
+
+.registration_section {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.registation {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.registration_button_enter {
+  width: 500px;
+  height: 48px;
+  border: none;
+  background: #fcec41;
+  font-family: $font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #171b24;
+}
+
 @media screen and (max-width: 1024px) {
+  .logo {
+    margin-left: 79px;
+  }
+
+  .buttons {
+    margin-right: 79px;
+  }
+
   .search_button {
     min-width: 130px;
+    width: 248px;
   }
 
   .buttons {
@@ -200,9 +348,8 @@ ul {
 
   #search_button_mobile {
     display: flex;
-    width: 85%;
-    margin-left: 7%;
-    margin-right: 7%;
+    width: 572px;
+    margin: 0 98px;
   }
   .buttons {
     gap: 0px;
@@ -220,6 +367,14 @@ ul {
 
   .dividing_line:nth-last-child(1) {
     display: none;
+  }
+
+  .logo {
+    margin-left: 98px;
+  }
+
+  .buttons {
+    margin-right: 98px;
   }
 }
 

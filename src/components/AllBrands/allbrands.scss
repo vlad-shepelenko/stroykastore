@@ -118,3 +118,42 @@
   flex-direction: column;
   gap: 28px;
 }
+
+@media screen and (max-width: 1024px) {
+  .banner_allbrands {
+    width: 866px;
+    margin: 30px 79px 0 79px;
+  }
+
+  .brands_letters_container {
+    margin: 0 79px;
+  }
+
+  .brands_letter_container {
+    margin: 0 79px;
+  }
+
+  .banner_navigation_text {
+    padding-left: 40px;
+  }
+
+  .all_brands_text {
+    padding-left: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .banner_allbrands {
+    width: 572px;
+    height: 232px;
+    margin: 30px 98px 0 98px;
+  }
+
+  .brands_letters_container {
+    margin: 0 98px;
+  }
+
+  .brands_letter_container {
+    margin: 0 98px;
+  }
+}
