@@ -21,7 +21,7 @@ const PopularCategories = () => {
             <div className="cart_categories" key={el.id}>
               <div className="cart_categories_name">{el.name}</div>
               <div className="cart_categories_iamge">
-                <img src={el.image} alt={el.name} />
+                <img className="cart_image" src={el.image} alt={el.name} />
               </div>
             </div>
           ))}

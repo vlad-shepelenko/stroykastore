@@ -117,3 +117,36 @@
     margin: 0 98px;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .catalog_section {
+    margin: 20px 22px 40px 22px;
+  }
+
+  .catalog_banner {
+    margin: 0;
+    width: 316px;
+    height: 191px;
+  }
+
+  .catalog_navigation {
+    margin: 20px 0 0 20px;
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  .catalog_title {
+    margin-left: 20px;
+    font-size: 26px;
+    line-height: 34px;
+  }
+
+  .catalog_categories_container {
+    margin: 0;
+    justify-content: center;
+  }
+
+  .catalog_cart_container {
+    margin-top: 40px;
+  }
+}

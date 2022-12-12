@@ -126,3 +126,44 @@
     line-height: 34px;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .refunds_container {
+    margin-top: 20px;
+  }
+  .refunds_banner_content {
+    padding: 10px 0 0 20px;
+    width: 256px;
+  }
+
+  .refunds_banner {
+    margin: 0 22px;
+    width: 316px;
+    height: 236px;
+  }
+
+  .refunds_banner_navigation {
+    width: 276px;
+  }
+
+  .refunds_banner_title {
+    font-size: 26px;
+    line-height: 34px;
+    width: 276px;
+  }
+
+  .refunds_banner_description {
+    font-size: 13px;
+    line-height: 19px;
+    width: 276px;
+  }
+
+  .refunds_types_container {
+    margin: 0 22px;
+  }
+
+  .refunds_types_title,
+  .refunds_types_text {
+    width: 316px;
+  }
+}

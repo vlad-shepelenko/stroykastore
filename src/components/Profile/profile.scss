@@ -152,3 +152,58 @@
     width: 500px;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .profile_container {
+    margin: 20px 22px 40px 22px;
+    width: 316px;
+  }
+
+  .profile_title {
+    font-size: 26px;
+    line-height: 34px;
+  }
+
+  .profile_container_title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .profile_container_content {
+    border: none;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: auto;
+  }
+
+  .profile_user_general_content {
+    flex-direction: column;
+  }
+
+  .profile_user_additional_content {
+    flex-direction: column;
+  }
+
+  .profile_user_password_content {
+    flex-direction: column;
+  }
+
+  .medium_input,
+  .large_input,
+  .profile_user_savechanges,
+  .profile_user_general_content,
+  .profile_user_additional_content,
+  .profile_user_password_content,
+  .profile_user_email_content,
+  .profile_user_button_content,
+  .profile_container_title,
+  .profile_title_content,
+  .profile_title_container,
+  .profile_user_information_container {
+    width: 296px;
+  }
+
+  .profile_container_content {
+    width: 296px;
+  }
+}

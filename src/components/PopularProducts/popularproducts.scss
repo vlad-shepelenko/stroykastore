@@ -124,3 +124,32 @@
     margin: 0 98px;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .popularProducts_title {
+    margin: 0 0 20px 22px;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .cart_products_container {
+    margin: 0 22px;
+  }
+
+  .cart_product {
+    width: 316px;
+    height: 446px;
+  }
+
+  .product_image {
+    width: 316px;
+  }
+
+  .cart_description_container {
+    width: 316px;
+  }
+
+  .button_toCart {
+    width: 280px;
+  }
+}

@@ -210,12 +210,14 @@ button[aria-label="forwardButton"] {
 
 @media screen and (max-width: 360px) {
   .hOQiSy {
+    width: 316px !important;
     height: 206px !important;
   }
 
   .epKbGN {
-    margin-top: 166px;
-    padding: 0rem 4rem !important;
+    margin-top: 164px;
+    width: 80% !important;
+    margin-left: 110px;
   }
 
   .hCJOJS {
@@ -255,33 +257,8 @@ button[aria-label="forwardButton"] {
     height: 32px;
     font-size: 14px;
   }
-}
 
-@media screen and (max-width: 409px) {
-  .epKbGN {
-    height: 28px;
-    margin-top: 291px;
-  }
-
-  .hCJOJS {
-    width: 28px !important;
-    height: 28px !important;
-    line-height: 2.1rem !important;
-  }
-
-  .slider_button_more {
-    height: 28px;
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .epKbGN {
-    margin-top: 167px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .epKbGN {
-    margin-top: 172px;
+  .slider_container {
+    padding: 20px 22px;
   }
 }

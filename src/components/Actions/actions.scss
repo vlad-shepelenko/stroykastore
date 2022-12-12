@@ -184,3 +184,39 @@
     margin: 0 98px;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .title_actions {
+    margin: 0;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .all_actions {
+    display: none;
+  }
+
+  .header_actions {
+    margin: 0 0 16px 22px;
+  }
+
+  .content_actions {
+    margin: 0 22px;
+  }
+
+  .cart_action {
+    width: 316px;
+  }
+
+  .image_action {
+    width: 316px;
+  }
+
+  .cart_action_container {
+    width: 316px;
+  }
+
+  .cart_butoon {
+    width: 280px;
+  }
+}

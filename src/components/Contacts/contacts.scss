@@ -105,3 +105,39 @@
     flex-wrap: wrap;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .contacts_section {
+    margin-top: 20px;
+    width: 360px;
+  }
+
+  .contacts_header {
+    margin-left: 22px;
+  }
+
+  .contacts_title {
+    font-size: 26px;
+    line-height: 34px;
+  }
+
+  .contacts_navigation {
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  .contacts_map {
+    width: 316px;
+    height: 187px;
+    margin: 0 11px;
+  }
+
+  .contacts_company_properties {
+    margin: 0 22px;
+  }
+
+  .contacts_company_name {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}

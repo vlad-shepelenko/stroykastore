@@ -19,7 +19,7 @@ const PopularBrands = () => {
         <div className="cart_brands_container">
           {popularBrandsData.map((el) => (
             <div className="brand_cart" key={el.id}>
-              <img src={el.image} alt="bever" />
+              <img className="brand_cart_image" src={el.image} alt="bever" />
             </div>
           ))}
         </div>

@@ -279,3 +279,88 @@
     margin-top: 40px;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .product_section {
+    margin-top: 20px;
+  }
+
+  .product_section_navigation {
+    margin: 0 22px;
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  .product_general_container {
+    margin: 0 22px;
+    width: 314px;
+  }
+
+  .product_general_image {
+    width: 314px;
+    height: 237px;
+  }
+
+  .product_general_description {
+    width: 314px;
+  }
+
+  .product_general_description_name {
+    width: 276px;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .product_availability {
+    width: 276px;
+  }
+
+  .product_general_description_price {
+    width: 276px;
+  }
+
+  .product_buttons_section {
+    flex-direction: column-reverse;
+    width: 276px;
+  }
+
+  .product_tocart {
+    width: 276px;
+  }
+
+  .prodcut_count_input {
+    width: 180px;
+  }
+
+  .product_provider,
+  .product_delivery_section {
+    width: 276px;
+  }
+
+  .product_delivery {
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  .product_additional_description {
+    margin: 0 22px;
+    width: 316px;
+  }
+
+  .product_additional_description_title,
+  .product_additional_description_text {
+    width: 276px;
+  }
+
+  .product_additional_description_title {
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .product_additional_description_text {
+    font-size: 13px;
+    line-height: 19px;
+    margin-bottom: 20px;
+  }
+}

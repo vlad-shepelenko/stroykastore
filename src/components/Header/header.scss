@@ -489,9 +489,56 @@ ul {
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 360px) {
   .header_pc {
-    justify-content: center;
-    gap: 10px;
+    height: 40px;
+    justify-content: space-between;
+    gap: 44px;
+    margin: 6px 22px;
+  }
+
+  .burger_menu {
+    width: 24px;
+    height: 24px;
+  }
+
+  .logo_image {
+    height: 40px;
+    width: 148px;
+  }
+
+  .cart {
+    width: 24px;
+    height: 24px;
+  }
+
+  #search_button_mobile {
+    margin: 0 22px;
+    width: 316px;
+  }
+
+  .login_section,
+  .login_buttons_section,
+  .password_section {
+    width: 256px;
+  }
+
+  .input_email,
+  .input_password,
+  .login_button_enter,
+  .login_button_create {
+    width: 256px;
+  }
+
+  .ant-modal-content {
+    width: 316px;
+  }
+
+  .registration_section {
+    flex-direction: column;
+  }
+
+  .registration_button_enter {
+    width: 246px;
   }
 }

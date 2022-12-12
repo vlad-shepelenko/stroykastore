@@ -68,3 +68,24 @@
     margin: 60px 98px;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .thanks_section {
+    margin: 50px 22px;
+    width: 316px;
+  }
+
+  .thanks_text_container {
+    width: 272px;
+  }
+
+  .thanks_title {
+    font-size: 34px;
+    line-height: 44px;
+  }
+
+  .thanks_text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}

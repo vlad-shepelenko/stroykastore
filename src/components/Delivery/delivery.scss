@@ -217,3 +217,60 @@
     width: 572px;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .delivery_banner {
+    width: 316px;
+    height: 206px;
+    margin: 0 22px;
+  }
+
+  .banner_delivery_text,
+  .banner_delivery_title,
+  .banner_delivery_description {
+    margin-left: 20px;
+  }
+
+  .banner_delivery_title {
+    font-size: 26px;
+    line-height: 34px;
+  }
+
+  .banner_delivery_description {
+    width: 276px;
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  .delivery_howto_container {
+    margin: 0 22px;
+  }
+
+  .delivery_howto_title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .delivery_section_container {
+    gap: 40px;
+  }
+
+  .delivery_howto_cart {
+    width: 148px;
+  }
+
+  .delivery_faq_container {
+    margin: 0 22px;
+    width: 316px;
+  }
+
+  .deilvery_faq_title {
+    font-size: 20px;
+    line-height: 26px;
+    width: 316px;
+  }
+
+  .delivery_faq_content {
+    width: 316px;
+  }
+}

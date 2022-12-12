@@ -111,3 +111,10 @@
 .react-multiple-carousel__arrow {
   display: none;
 }
+
+@media screen and (max-width: 360px) {
+  .reviews_title {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}

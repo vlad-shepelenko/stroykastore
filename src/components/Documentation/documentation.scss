@@ -139,3 +139,20 @@
     gap: 12px;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .documentation_navigation {
+    margin: 20px 0 0 22px;
+  }
+
+  .documentation_title {
+    margin: 10px 0 0 22px;
+    font-size: 26px;
+    line-height: 34px;
+  }
+
+  .documentation_carts_container {
+    margin: 40px 22px;
+    justify-content: center;
+  }
+}

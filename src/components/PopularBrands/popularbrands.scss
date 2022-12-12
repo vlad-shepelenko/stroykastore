@@ -79,3 +79,30 @@
     gap: 16px;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .all_brands_button {
+    display: none;
+  }
+
+  .title_brands {
+    font-size: 20px;
+    line-height: 26px;
+    margin: 0 0 16px 22px;
+  }
+
+  .cart_brands_container {
+    margin: 0 22px;
+    gap: 8px;
+  }
+
+  .brand_cart {
+    width: 100px;
+    height: 66px;
+  }
+
+  .brand_cart_image {
+    width: 100px;
+    height: 66px;
+  }
+}

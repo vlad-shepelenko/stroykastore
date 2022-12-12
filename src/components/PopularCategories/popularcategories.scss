@@ -102,14 +102,35 @@
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 360px) {
   .all_categories_button {
-    font-size: 14px;
+    display: none;
   }
-}
 
-@media screen and (max-width: 550px) {
+  .title_categories {
+    font-size: 20px;
+    line-height: 26px;
+    margin: 0 0 16px 22px;
+  }
+
   .cart_categories_container {
-    gap: 5px;
+    margin: 0 22px;
+  }
+
+  .cart_categories {
+    width: 148px;
+    height: 148px;
+  }
+
+  .cart_categories_iamge {
+    height: 106px;
+  }
+
+  .cart_image {
+    height: 106px;
+  }
+
+  .cart_categories_name {
+    font-size: 15px;
   }
 }

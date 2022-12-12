@@ -70,7 +70,12 @@ const Header = () => {
             />
             <section onClick={handleClick} className="logo">
               <span onClick={() => navigate("/home")}>
-                <img onClick={() => navigate("/home")} src={logo} alt="Logo" />
+                <img
+                  className="logo_image"
+                  onClick={() => navigate("/home")}
+                  src={logo}
+                  alt="Logo"
+                />
               </span>
             </section>
             <section className="buttons">
@@ -148,7 +153,7 @@ const Header = () => {
               </object>
               <span className="catalog">Каталог</span>
             </div>
-            <div className="button_unit">
+            <div onClick={() => setLogin(true)} className="button_unit">
               <object
                 data={profile}
                 type="image/svg+xml"
@@ -196,11 +201,11 @@ const Header = () => {
           <hr className="dividing_line incomplete" />
           <section className="nav_menu_header">
             <ul>
-              <li>Бренды</li>
-              <li>Доставка</li>
-              <li>Возврат</li>
-              <li>Документация</li>
-              <li>Контакты</li>
+              <li onClick={() => navigate("/brands")}>Бренды</li>
+              <li onClick={() => navigate("/delivery")}>Доставка</li>
+              <li onClick={() => navigate("/refunds")}>Возврат</li>
+              <li onClick={() => navigate("/documentation")}>Документация</li>
+              <li onClick={() => navigate("/contacts")}>Контакты</li>
             </ul>
           </section>
         </section>

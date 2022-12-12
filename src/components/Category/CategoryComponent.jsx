@@ -242,10 +242,10 @@ const CategoryComponent = () => {
               </div>
             ) : null}
             <div className="category_products_sort">
-              <span className="category_products_sort">Популярные</span>
-              <span className="category_products_sort">Дешевле</span>
-              <span className="category_products_sort">Дороже</span>
-              <span className="category_products_sort">По алфавиту</span>
+              <span className="category_products_sort_item">Популярные</span>
+              <span className="category_products_sort_item">Дешевле</span>
+              <span className="category_products_sort_item">Дороже</span>
+              <span className="category_products_sort_item">По алфавиту</span>
             </div>
             <div className="category_products_cart_container">
               {productCategoryData.map((el) => (

@@ -67,3 +67,22 @@
     width: 376px;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .about_main {
+    background: none;
+  }
+
+  .about_description {
+    padding: 0;
+  }
+
+  .about_container {
+    margin: 0 22px;
+    width: 316px;
+  }
+
+  .about_text {
+    width: 316px;
+  }
+}
