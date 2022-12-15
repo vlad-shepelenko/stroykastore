@@ -41,7 +41,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (size !== undefined && size.width < 1000 && size.width > 680) {
+    if (size !== undefined && size.width < 1000 && size.width > 768) {
       setShowMenu(false);
     }
     if (size !== undefined && size.width > 1024) {
@@ -49,7 +49,7 @@ const Header = () => {
     }
   }, [size]);
   const handleClick = () => {
-    if (size.width !== undefined && size.width < 680 && showMenu) {
+    if (size.width !== undefined && size.width < 768 && showMenu) {
       setShowMenu(false);
       setShowSlider(true);
     } else {
@@ -129,7 +129,7 @@ const Header = () => {
             </object>
           </section>
         </section>
-        <section>
+        <section className="search_button_mob_section">
           <input
             id="search_button_mobile"
             type="text"
@@ -181,7 +181,7 @@ const Header = () => {
                   Location
                 </object>
               </span>
-              <a href="google.com">Город</a>
+              <span>Город</span>
             </div>
           </section>
           <hr className="dividing_line incomplete" />

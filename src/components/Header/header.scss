@@ -292,7 +292,7 @@ ul {
   color: #171b24;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1439px) and (min-width: 1024px) {
   .logo {
     margin-left: 79px;
   }
@@ -320,22 +320,9 @@ ul {
   .dividing_line:nth-last-child(1) {
     display: none;
   }
-
-  @media screen and (max-width: 860px) {
-    .catalog {
-      display: none;
-    }
-    .button_catalog {
-      min-width: 50px;
-      width: auto;
-    }
-    .search_button {
-      min-width: 130px;
-    }
-  }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) and (min-width: 768px) {
   .search_button {
     display: none;
   }
@@ -346,10 +333,13 @@ ul {
     display: flex;
   }
 
+  .search_button_mob_section {
+    margin: 0 98px;
+  }
+
   #search_button_mobile {
     display: flex;
-    width: 572px;
-    margin: 0 98px;
+    width: 100%;
   }
   .buttons {
     gap: 0px;
@@ -382,124 +372,41 @@ ul {
   display: none;
 }
 
-@media screen and (max-width: 679px) {
-  .cart,
-  .burger_menu {
-    display: flex;
-    width: 40px;
-    height: 40px;
-  }
-
-  .buttons {
-    display: none;
-  }
-  .header_mobile {
-    flex-direction: row;
-  }
-  .header_pc {
-    justify-content: space-between;
-    margin: 0 7%;
-    width: auto;
-  }
-  .logo {
-    margin: 0;
-  }
-
-  .dividing_line {
-    margin-top: 6px;
-  }
-
-  .mobile_menu {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    margin: 0 7%;
-  }
-
-  .button_catalog {
-    width: 100%;
-  }
-
-  .button_unit {
-    font-family: $font;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
-    border: 1px solid #d1d1d3;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    font-size: 18px;
-    height: 48px;
-    gap: 8px;
-  }
-
-  .city_menu {
-    display: flex;
-    gap: 8px;
-    font-family: $font;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 22px;
-    font-size: 15px;
-  }
-
-  .city_menu_section {
-    margin: 20px 7%;
-  }
-
-  .incomplete {
-    display: flex;
-    width: 85%;
-  }
-
-  .nav_menu > ul {
-    display: initial;
-    margin: 0;
-    margin-bottom: 14px;
-  }
-
-  ul {
-    margin: 0;
-  }
-
-  li {
-    margin-top: 14px;
-  }
-
-  .nav_menu,
-  .nav_menu_header {
-    display: flex;
-    font-family: $font;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #454950;
-    margin-left: 7%;
-  }
-
-  .opened_menu {
-    display: inline;
-  }
-
-  .dividing_line:nth-last-child(1) {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 767px) and (min-width: 0px) {
   .header_pc {
     height: 40px;
     justify-content: space-between;
     gap: 44px;
     margin: 6px 22px;
+    width: auto;
+  }
+
+  .button_catalog {
+    display: flex;
+  }
+
+  .mobile_menu,
+  .button_catalog,
+  .city_menu_section {
+    display: flex;
   }
 
   .burger_menu {
+    display: flex;
     width: 24px;
     height: 24px;
+  }
+
+  .buttons {
+    display: none;
+  }
+
+  .logo {
+    margin: 0;
+  }
+
+  .buttons_section {
+    display: none;
   }
 
   .logo_image {
@@ -508,13 +415,14 @@ ul {
   }
 
   .cart {
+    display: flex;
     width: 24px;
     height: 24px;
   }
 
   #search_button_mobile {
-    margin: 0 22px;
-    width: 316px;
+    display: flex;
+    width: 100%;
   }
 
   .login_section,
@@ -540,5 +448,73 @@ ul {
 
   .registration_button_enter {
     width: 246px;
+  }
+
+  .mobile_menu {
+    flex-direction: column;
+    margin: 0 22px;
+    gap: 10px;
+  }
+
+  .button_catalog {
+    width: 100%;
+  }
+
+  .button_unit {
+    flex-direction: row;
+    width: 99.7%;
+    height: 46px;
+    justify-content: center;
+    border: 1px solid #e8e9ea;
+  }
+
+  .search_button_mob_section {
+    margin: 0 22px;
+  }
+
+  .nav_menu > ul {
+    display: initial;
+    margin: 0;
+    margin-bottom: 14px;
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  li {
+    margin-top: 14px;
+  }
+
+  .nav_menu,
+  .nav_menu_header {
+    display: flex;
+    font-family: $font;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #454950;
+    margin-left: 22px;
+  }
+
+  .incomplete {
+    display: flex;
+    width: 90%;
+  }
+
+  .city_menu {
+    display: flex;
+    gap: 8px;
+    font-family: $font;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    font-size: 15px;
+    color: #5d6066;
+  }
+
+  .city_menu_section {
+    margin: 20px 22px;
   }
 }

@@ -33,7 +33,7 @@ nav {
   font-size: 15px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1439px) and (min-width: 1024px) {
   .city {
     margin-left: 79px;
   }
@@ -42,7 +42,7 @@ nav {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) and (min-width: 768px) {
   .navigation > span:nth-child(1) {
     display: none;
   }
@@ -59,7 +59,7 @@ nav {
   }
 }
 
-@media screen and (max-width: 679px) {
+@media screen and (max-width: 767px) {
   nav {
     display: none;
   }

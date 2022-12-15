@@ -2,15 +2,18 @@
 
 .about_container {
   display: flex;
-  width: 1360px;
+  width: 100%;
   height: 456px;
-  padding-bottom: 40px;
-  padding-left: 40px;
+  margin-bottom: 40px;
+  //padding-bottom: 40px;
+  //padding-left: 40px;
 }
 
 .about_main {
+  margin: 0 40px;
   width: 100%;
   height: 100%;
+  background-size: cover !important;
   background: url("../../assets/images/about.svg");
 }
 
@@ -35,26 +38,21 @@
 .about_description {
   display: flex;
   flex-direction: column;
-  padding-left: 198px;
+  margin-left: 200px;
   height: 100%;
   justify-content: center;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1439px) and (min-width: 1024px) {
   .about_container {
-    width: 866px;
+    width: 100%;
     height: 380px;
-  }
-
-  .about_main {
-    background-size: cover;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) and (min-width: 768px) {
   .about_container {
-    margin: 0 98px;
-    width: 572px;
+    width: 100%;
     height: 538px;
   }
 
@@ -68,21 +66,23 @@
   }
 }
 
-@media screen and (max-width: 360px) {
-  .about_main {
-    background: none;
-  }
-
+@media screen and (max-width: 767px) {
   .about_description {
+    margin: 0;
     padding: 0;
   }
 
+  .about_main {
+    background: none !important;
+  }
+
   .about_container {
-    margin: 0 22px;
-    width: 316px;
+    width: 100%;
   }
 
   .about_text {
-    width: 316px;
+    width: 100%;
+    font-size: 13px;
+    line-height: 19px;
   }
 }

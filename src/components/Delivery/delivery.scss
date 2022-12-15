@@ -5,8 +5,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 20px;
-  margin-left: 40px;
-  width: 1360px;
+  width: 100%;
   height: 312px;
   background: url("../../assets/images/delivery.svg");
 }
@@ -59,7 +58,6 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  margin-left: 140px;
 }
 
 .delivery_howto_description {
@@ -130,8 +128,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 1160px;
-  margin-left: 140px;
+  width: 100%;
   min-height: 920px;
   border: 1px solid #d1d1d3;
 }
@@ -159,23 +156,12 @@
   display: flex;
   flex-direction: column;
   gap: 80px;
-  margin: 40px 0 80px 0;
+  margin: 40px 140px 80px 140px;
 }
 
-@media screen and (max-width: 1024px) {
-  .delivery_banner {
-    width: 866px;
-    background-size: cover;
-    margin: 0 79px;
-  }
-
-  .delivery_howto_container {
-    margin: 0 79px;
-  }
-
-  .delivery_faq_container {
-    width: 866px;
-    margin: 0 79px;
+@media screen and (max-width: 1439px) and (min-width: 1024px) {
+  .delivery_section_container {
+    margin: 30px 79px 60px 79px;
   }
 
   .banner_delivery_text,
@@ -185,27 +171,29 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .delivery_banner {
-    margin: 0 98px;
-    width: 572px;
-    background-size: cover;
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .delivery_section_container {
+    margin: 30px 98px 60px 98px;
   }
 
-  .delivery_howto_container {
-    margin: 0 98px;
+  .banner_delivery_text,
+  .banner_delivery_title,
+  .banner_delivery_description {
+    margin-left: 40px;
+  }
+
+  .delivery_banner {
+    background-size: cover;
   }
 
   .delivery_howto_steps {
     flex-wrap: wrap;
+    justify-content: center;
     gap: 16px;
   }
 
   .delivery_faq_container {
-    margin: 0 98px;
-    width: 572px;
     justify-content: flex-start;
-    border: none;
     min-height: auto;
   }
 
@@ -218,17 +206,19 @@
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 767px) {
+  .delivery_section_container {
+    margin: 20px 22px 40px 22px;
+  }
+
   .delivery_banner {
-    width: 316px;
     height: 206px;
-    margin: 0 22px;
   }
 
   .banner_delivery_text,
   .banner_delivery_title,
   .banner_delivery_description {
-    margin-left: 20px;
+    margin-left: 20px !important;
   }
 
   .banner_delivery_title {
@@ -240,10 +230,6 @@
     width: 276px;
     font-size: 13px;
     line-height: 19px;
-  }
-
-  .delivery_howto_container {
-    margin: 0 22px;
   }
 
   .delivery_howto_title {
@@ -259,18 +245,24 @@
     width: 148px;
   }
 
-  .delivery_faq_container {
-    margin: 0 22px;
-    width: 316px;
-  }
-
   .deilvery_faq_title {
     font-size: 20px;
     line-height: 26px;
-    width: 316px;
+    width: 95%;
   }
 
   .delivery_faq_content {
-    width: 316px;
+    width: 95%;
+  }
+
+  .delivery_howto_steps {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .delivery_faq_container {
+    border: none;
+    min-height: auto;
   }
 }
