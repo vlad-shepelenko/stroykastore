@@ -60,24 +60,28 @@
   gap: 24px;
   align-items: center;
   justify-content: center;
-  margin: 80px 430px 80px 430px;
 }
 
-@media screen and (max-width: 1024px) {
-  .notfound_section {
-    margin: 80px 222px;
+.notfound_container{
+  height: 470px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .notfound_container{
+    height: 450px;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .notfound_section {
-    margin: 60px 98px;
+@media screen and (max-width: 767px) {
+  .notfound_container{
+    height: 447px;
   }
-}
 
-@media screen and (max-width: 360px) {
   .notfound_section {
-    margin: 50px 21.5px;
     width: 317px;
     height: 347px;
   }

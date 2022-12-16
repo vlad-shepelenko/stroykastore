@@ -235,7 +235,7 @@ const CategoryComponent = () => {
             </section>
           </div>
           <div className="category_products_container">
-            {size !== undefined && size.width <= 1000 ? (
+            {size !== undefined && size.width <= 1439 ? (
               <div onClick={() => setShow(true)} className="button_filter">
                 <img src={buttonFilters} alt="filter" />
                 <span>Фильтры</span>

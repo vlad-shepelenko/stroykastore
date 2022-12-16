@@ -2,9 +2,9 @@
 
 .catalog_banner {
   background: url("../../assets/images/catalogbanner.svg");
-  width: 1360px;
+  width: 100%;
+  background-size: cover;
   height: 232px;
-  margin-left: 40px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -77,7 +77,7 @@
 }
 
 .catalog_categories_container {
-  margin-left: 140px;
+  justify-content: center;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -85,13 +85,12 @@
 }
 
 .catalog_section {
-  margin: 40px 0 80px 0;
+  margin: 40px 140px 80px 140px;
 }
 
-@media screen and (max-width: 1024px) {
-  .catalog_banner {
-    width: 866px;
-    margin: 0 79px;
+@media screen and (max-width: 1439px) and (min-width: 1024px) {
+  .catalog_section {
+    margin: 30px 79px 60px 79px;
   }
 
   .catalog_navigation {
@@ -101,31 +100,21 @@
   .catalog_title {
     margin: 0 0 0 40px;
   }
+}
 
-  .catalog_categories_container {
-    margin: 0 79px;
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .catalog_section {
+    margin: 30px 98px 50px 98px;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .catalog_banner {
-    width: 572px;
-    margin: 0 98px;
-  }
-
-  .catalog_categories_container {
-    margin: 0 98px;
-  }
-}
-
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 767px) {
   .catalog_section {
     margin: 20px 22px 40px 22px;
   }
 
   .catalog_banner {
     margin: 0;
-    width: 316px;
     height: 191px;
   }
 
@@ -139,11 +128,6 @@
     margin-left: 20px;
     font-size: 26px;
     line-height: 34px;
-  }
-
-  .catalog_categories_container {
-    margin: 0;
-    justify-content: center;
   }
 
   .catalog_cart_container {

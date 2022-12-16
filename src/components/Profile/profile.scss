@@ -121,9 +121,10 @@
   width: 696px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) and (min-width: 768px) {
   .profile_container {
-    width: 568px;
+    justify-content: center;
+    width: 85%;
     margin: 30px 98px 59px 98px;
   }
 
@@ -153,10 +154,10 @@
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 767px) {
   .profile_container {
     margin: 20px 22px 40px 22px;
-    width: 316px;
+    width: 90%;
   }
 
   .profile_title {

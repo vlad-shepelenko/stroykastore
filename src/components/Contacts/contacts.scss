@@ -72,19 +72,16 @@
 }
 
 .contacts_section {
-  margin-top: 40px;
+  margin: 40px 140px 80px 140px;
   display: flex;
+  width: 85%;
   flex-direction: column;
   gap: 40px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1439px) and (min-width: 1024px) {
   .contacts_section {
-    width: 866px;
-    margin-bottom: 60px;
-  }
-  .contacts_map {
-    width: 866px;
+    margin: 30px 79px 60px 79px;
   }
 
   .about_container {
@@ -92,13 +89,10 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) and (min-width: 768px) {
   .contacts_section {
-    width: 569px;
-  }
-
-  .contacts_map {
-    width: 572px;
+    margin: 40px 99.5px 50px 99.5px;
+    width: 80%;
   }
 
   .contacts_company_properties_container {
@@ -106,14 +100,10 @@
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 767px) {
   .contacts_section {
-    margin-top: 20px;
-    width: 360px;
-  }
+    margin: 20px 22px 60px 22px;
 
-  .contacts_header {
-    margin-left: 22px;
   }
 
   .contacts_title {
@@ -126,12 +116,6 @@
     line-height: 19px;
   }
 
-  .contacts_map {
-    width: 316px;
-    height: 187px;
-    margin: 0 11px;
-  }
-
   .contacts_company_properties {
     margin: 0 22px;
   }
@@ -139,5 +123,9 @@
   .contacts_company_name {
     font-size: 20px;
     line-height: 26px;
+  }
+
+  .contacts_company_properties_container{
+    flex-wrap: wrap;
   }
 }

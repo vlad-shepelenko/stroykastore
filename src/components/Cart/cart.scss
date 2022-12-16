@@ -2,8 +2,8 @@
 
 .cart_banner {
   height: 232px;
-  width: 1360px;
-  margin-left: 40px;
+  width: 1160px;
+  background-size: cover;
   background: url("../../assets/images/cartbanner.svg");
   display: flex;
   flex-direction: column;
@@ -241,8 +241,8 @@
 .section_cart_content {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   gap: 16px;
-  margin-left: 140px;
 }
 
 .cart_product_section {
@@ -254,14 +254,18 @@
 .section_cart {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 40px;
-  margin: 40px 0 80px 0;
+  margin: 40px 140px 80px 140px;
 }
 
-@media screen and (max-width: 1024px) {
-  .cart_banner {
-    width: 866px;
-    margin: 0 79px;
+@media screen and (max-width: 1439px) and (min-width: 1024px) {
+  .section_cart{
+    margin: 30px 79px 60px 79px;
+  }
+
+  .cart_banner{
+    width: 100%;
   }
 
   .cart_navigation {
@@ -273,8 +277,7 @@
   }
 
   .section_cart_content {
-    width: 866px;
-    margin: 0 79px;
+    justify-content: center;
   }
 
   .cart_product_container {
@@ -310,15 +313,17 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .cart_banner {
-    margin: 0 98px;
-    width: 572px;
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .section_cart{
+    margin: 30px 98px 60px 98px;
+  }
+  
+  .cart_banner{
+    width: 100%;
   }
 
   .section_cart_content {
     flex-direction: column-reverse;
-    margin: 0 98px;
   }
 
   .cart_total_container {
@@ -332,17 +337,49 @@
     width: 278px;
     margin: 0;
   }
-}
 
-@media screen and (max-width: 360px) {
-  .section_cart {
-    margin: 20px 0 40px 0;
+  .cart_product_name_container{
+    width: 212px;
+    padding-left: 8px;
   }
 
-  .cart_banner {
-    margin: 0 22px;
-    width: 316px;
-    height: 191px;
+  .cart_product_description{
+    width: 100%;
+  }
+
+  .cart_input_count{
+    width: 100px;
+  }
+
+  .cart_product_id_container{
+    width: 179px;
+  }
+
+  .cart_product_id{
+    width: 100%;
+  }
+
+  .cart_button_delete_product{
+    width: 163px;
+  }
+
+  .cart_product_image{
+    width: 200px;
+  }
+
+  .cart_product_container{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .section_cart {
+    margin: 20px 22px 40px 22px;
+    align-items: center;
+  }
+
+  .cart_banner{
+    width: 100%;
   }
 
   .cart_navigation {
@@ -357,8 +394,8 @@
     line-height: 26px;
   }
 
-  .section_cart_content {
-    margin: 0 22px;
+  .section_cart_content{
+    flex-direction: column-reverse;
   }
 
   .cart_product_container {

@@ -4,7 +4,8 @@ import "./thanks.scss";
 const ThanksComponent = () => {
   return (
     <>
-      <section className="thanks_section">
+    <section className="thanks_container">
+    <section className="thanks_section">
         <div className="thanks_text_container">
           <img className="thanks_image" src={checkThanks} alt="thanks" />
           <h1 className="thanks_title">Спасибо!</h1>
@@ -16,6 +17,7 @@ const ThanksComponent = () => {
           <button className="thanks_button">Перейти на главную</button>
         </div>
       </section>
+    </section>
     </>
   );
 };

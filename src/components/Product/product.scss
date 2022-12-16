@@ -1,7 +1,6 @@
 @import "../../assets/styles/global_style.scss";
 
 .product_section_navigation {
-  margin-left: 140px;
   font-family: $font;
   font-style: normal;
   font-weight: 400;
@@ -47,10 +46,8 @@
 }
 
 .product_general_container {
-  margin-left: 140px;
   display: flex;
   flex-direction: row;
-  width: 1160px;
   border: 1px solid #e8e9ea;
 }
 
@@ -152,8 +149,6 @@
 
 .product_additional_description {
   align-items: center;
-  margin-left: 140px;
-  width: 1160px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -188,18 +183,12 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  margin-top: 40px;
-  margin-bottom: 80px;
+  margin: 40px 140px 80px 140px;
 }
 
-@media screen and (max-width: 1024px) {
-  .product_section_navigation {
-    margin: 0 79px;
-  }
-
-  .product_general_container {
-    margin: 0 79px;
-    width: 866px;
+@media screen and (max-width: 1439px) and (min-width: 1024px) {
+  .product_section {
+    margin: 30px 79px 60px 79px;
   }
 
   .product_general_image {
@@ -224,20 +213,15 @@
   .product_provider {
     width: 424px;
   }
-
-  .product_additional_description {
-    width: 866px;
-    margin: 0 79px;
-  }
 }
 
-@media screen and (max-width: 768px) {
-  .product_section_navigation {
-    margin: 0 98px;
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .product_section {
+    margin: 30px 98px 50px 98px;
+    align-items: center;
   }
 
   .product_general_container {
-    margin: 0 98px;
     width: 572px;
     flex-direction: column;
   }
@@ -266,7 +250,6 @@
   }
 
   .product_additional_description {
-    margin: 0 98px;
     width: 572px;
   }
 
@@ -280,9 +263,10 @@
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 767px) {
   .product_section {
-    margin-top: 20px;
+    margin: 20px 22px 40px 22px;
+    align-items: center;
   }
 
   .product_section_navigation {
@@ -292,8 +276,7 @@
   }
 
   .product_general_container {
-    margin: 0 22px;
-    width: 314px;
+    flex-direction: column;
   }
 
   .product_general_image {
@@ -343,7 +326,6 @@
   }
 
   .product_additional_description {
-    margin: 0 22px;
     width: 316px;
   }
 

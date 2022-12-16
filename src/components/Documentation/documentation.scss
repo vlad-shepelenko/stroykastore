@@ -56,14 +56,14 @@
 }
 
 .documentation_carts_container {
+  justify-content: center;
   display: flex;
   flex-direction: row;
   gap: 16px;
-  margin: 40px 0 80px 140px;
+  margin-top: 40px;
 }
 
 .documentation_navigation {
-  margin: 40px 0 0 140px;
   font-family: $font;
   font-style: normal;
   font-weight: 400;
@@ -73,7 +73,7 @@
 }
 
 .documentation_title {
-  margin: 20px 0 0 140px;
+  margin: 20px 0 0 0;
   font-family: $font;
   font-style: normal;
   font-weight: 700;
@@ -85,15 +85,16 @@
 .documentation_container {
   display: flex;
   flex-direction: column;
+  margin: 40px 140px 80px 140px;
 }
 
-@media screen and (max-width: 1024px) {
-  .documentation_navigation {
-    margin: 30px 0 0 79px;
+@media screen and (max-width: 1439px) and (min-width: 1024px) {
+  .documentation_container {
+    margin: 30px 79px 60px 79px;
   }
 
   .documentation_title {
-    margin: 20px 0 0 79px;
+    margin: 20px 0 0 0;
   }
 
   .documentation_image {
@@ -120,39 +121,53 @@
   }
 
   .documentation_carts_container {
-    margin: 30px 79px 60px 79px;
+    justify-content: center;
+    margin: 30px 0 0 0;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .documentation_navigation {
-    margin: 30px 0 0 98px;
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .documentation_container {
+    margin: 30px 98px 60px 98px;
   }
 
   .documentation_title {
-    margin: 20px 0 0 98px;
+    margin: 20px 0 0 0;
   }
 
   .documentation_carts_container {
-    margin: 30px 98px 60px 98px;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
   }
 }
 
-@media screen and (max-width: 360px) {
-  .documentation_navigation {
-    margin: 20px 0 0 22px;
+@media screen and (max-width: 767px) {
+  .documentation_container {
+    margin: 20px 22px 40px 22px;
   }
 
   .documentation_title {
-    margin: 10px 0 0 22px;
+    margin: 10px 0 0 0;
     font-size: 26px;
     line-height: 34px;
   }
 
   .documentation_carts_container {
-    margin: 40px 22px;
+    flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .documentation_cart, .documentation_image, .content_image_documentation{
+    width: 300px;
+  }
+
+  .documentation_description{
+    width: 298px;
+
+    .documentation_name, .documentation_size, .download_documentation{
+      width: 95%;
+      margin-left: 8px;
+    }
   }
 }
