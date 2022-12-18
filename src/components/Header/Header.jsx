@@ -10,8 +10,10 @@ import {
 import { useState, useEffect, useRef } from "react";
 import useResizeObserver from "@react-hook/resize-observer";
 import { useLayoutEffect } from "react";
-import { Modal } from "antd";
+import { Modal, Space, message } from "antd";
 import { useNavigate } from "react-router-dom";
+import { Context } from "../../index";
+import { useContext } from "react";
 
 const useSize = (target) => {
   const [size, setSize] = useState();
@@ -26,11 +28,18 @@ const useSize = (target) => {
 const Header = () => {
   const navigate = useNavigate();
   const [login, setLogin] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailRegistration, setEmailRegistration] = useState("");
+  const [passwordRegistration, setPasswordRegistration] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [registrarion, setRegistration] = useState(false);
   const [showMenu, setShowMenu] = useState(true);
+  const [messageApi, contextHolder] = message.useMessage();
   const [showSlider, setShowSlider] = useState(true);
   const target = useRef(null);
   const size = useSize(target);
+  const { store } = useContext(Context);
 
   const handleCancel = () => {
     setLogin(false);
@@ -57,8 +66,33 @@ const Header = () => {
       setShowSlider(false);
     }
   };
+
+  const error = () => {
+    messageApi.open({
+      type: "error",
+      content:
+        "Ваша почта не подтверждена! Проверьте сообщение, которое пришло Вам на почту!",
+    });
+  };
+
+  const handleLogin = async () => {
+    let { data } = await store.login(email, password);
+    if (data.user.isActivated === true) {
+      navigate("/profile");
+    } else {
+      error();
+    }
+    console.log(data.user.isActivated);
+  };
+
+  const handleRegistration = () => {
+    if (passwordRegistration === confirmPassword) {
+      store.registration(emailRegistration, passwordRegistration);
+    }
+  };
   return (
     <>
+      {contextHolder}
       <header ref={target}>
         <section className="header_mobile">
           <section className="header_pc">
@@ -211,7 +245,12 @@ const Header = () => {
         </section>
         <hr className="dividing_line" />
       </header>
-      <Modal centered open={login} onCancel={handleCancel} width={376}>
+      <Modal
+        centered
+        open={login}
+        onCancel={handleCancel}
+        width={size !== undefined && size.width < 768 ? 316 : 376}
+      >
         <h2 className="login_title">Вход</h2>
         <div className="login_section">
           <span className="input_label">E-mail</span>
@@ -219,6 +258,8 @@ const Header = () => {
             className="input_email"
             type="email"
             placeholder="yourmail@mail.com"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
           />
         </div>
         <div className="password_section">
@@ -227,10 +268,14 @@ const Header = () => {
             className="input_password"
             type="password"
             placeholder="пароль"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
           />
         </div>
         <div className="login_buttons_section">
-          <button className="login_button_enter">Войти</button>
+          <button className="login_button_enter" onClick={handleLogin}>
+            Войти
+          </button>
           <button
             onClick={() => setRegistration(true)}
             className="login_button_create"
@@ -243,24 +288,18 @@ const Header = () => {
         centered
         open={registrarion}
         onCancel={handldeCancelRegistraton}
-        width={572}
+        width={size !== undefined && size.width < 768 ? 316 : 572}
       >
         <h2 className="registration_title">Регистрация</h2>
         <div className="registration_section">
-          <div className="registation">
-            <span className="input_label">Имя</span>
+          <div className="registation long">
+            <span className="input_label long">E-mail</span>
             <input
-              className="input_registration"
-              type="text"
-              placeholder="Иннокентий"
-            />
-          </div>
-          <div className="registation">
-            <span className="input_label">E-mail</span>
-            <input
-              className="input_registration"
+              className="input_registration long"
               type="email"
               placeholder="yourmail@mail.com"
+              onChange={(e) => setEmailRegistration(e.target.value)}
+              value={emailRegistration}
             />
           </div>
         </div>
@@ -271,6 +310,8 @@ const Header = () => {
               className="input_registration"
               type="password"
               placeholder="пароль"
+              onChange={(e) => setPasswordRegistration(e.target.value)}
+              value={passwordRegistration}
             />
           </div>
           <div className="registation">
@@ -279,11 +320,16 @@ const Header = () => {
               className="input_registration"
               type="password"
               placeholder="пароль"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={confirmPassword}
             />
           </div>
         </div>
         <div className="login_buttons_section">
-          <button className="registration_button_enter">
+          <button
+            className="registration_button_enter"
+            onClick={handleRegistration}
+          >
             Зарегистрироваться
           </button>
         </div>

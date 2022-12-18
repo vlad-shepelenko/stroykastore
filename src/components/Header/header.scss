@@ -292,6 +292,16 @@ ul {
   color: #171b24;
 }
 
+.long {
+  width: 504px !important;
+}
+
+.ant-space {
+  gap: 0 !important;
+  display: flex;
+  width: 100%;
+}
+
 @media screen and (max-width: 1439px) and (min-width: 1024px) {
   .logo {
     margin-left: 79px;
@@ -379,6 +389,10 @@ ul {
     gap: 44px;
     margin: 6px 22px;
     width: auto;
+  }
+
+  .long {
+    width: 242px !important;
   }
 
   .button_catalog {
