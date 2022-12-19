@@ -1,54 +1,40 @@
 import "./allbrands.scss";
+import BrandsService from '../../service/BrandsService'
+import { useEffect } from "react";
+import { useState } from "react";
 
 const AllBrands = () => {
-  const filterSymbols = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "J",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "Z",
-    "А",
-    "Б",
-    "Г",
-    "Д",
-    "Е",
-    "Ж",
-    "З",
-    "И",
-    "К",
-    "Л",
-    "М",
-    "Н",
-    "О",
-    "П",
-    "Р",
-    "С",
-    "Т",
-    "У",
-    "Ф",
-    "Ш",
-    "Э",
-    "Я",
-  ];
+  const [firstLetter, setFirstLetter] = useState('');
+  const [firstLetterHeader, setFirstLetterHeader] = useState('')
+  const [filteredArray, setFitleredArray] = useState('')
+
+  useEffect(() => {
+    getBrandsFirstLetter()
+  },[])
+
+  async function getBrandsFirstLetter(){
+    try{
+      const response = await BrandsService.getBrandsFirstLetter()
+      setFirstLetter(response.data)
+      setFirstLetterHeader(response.data)
+      setFitleredArray(response.data)
+    }
+    catch(e){
+      console.log(e)
+    }
+  }
+
+  const handleChangeLetter = (e) => {
+    const letter = e.target.value;
+    if(letter == 'Все'){
+      setFitleredArray(firstLetter)
+    }
+    else{
+      const filteredMap = firstLetter.filter(array => Object.keys(array)[0] == letter)
+      setFitleredArray(filteredMap)
+    }
+  }
+
   return (
     <>
       <section className="allbrands_section">
@@ -58,31 +44,28 @@ const AllBrands = () => {
         </div>
         <div className="brands_container">
           <div className="brands_letters_container">
-            <button className="button_all_brands">Все</button>
-            {filterSymbols.map((el) => (
-              <button className="button_letter_brandes">{el}</button>
-            ))}
+            <button onClick={e => handleChangeLetter(e, "value")} value="Все" className="button_all_brands">Все</button>
+            {firstLetterHeader ? firstLetterHeader.map((el) => (      
+              <button onClick={e => handleChangeLetter(e, "value")} value={Object.keys(el)[0]} className="button_letter_brandes">{Object.keys(el)[0]}</button>
+            )):null}
           </div>
-          <div className="brands_letter_container">
-            <div className="brand_letter_container">
-              <div>
-                <h2 className="title_letter_text">A</h2>
+          {filteredArray ? filteredArray.map((el) => (
+            <>
+              <div className="brands_letter_container">
+                <div>
+                  <h2 className="title_letter_text">{Object.keys(el)[0]}</h2>
+                </div>
+                <div className="brands_name_container">
+                  {Object.values(el).map((brand) => (
+                    brand.map((element) => (
+                      <span className="brand_name_text">{element}</span>
+                    ))
+                  ))}
+                </div>
               </div>
-              <div className="brands_name_container">
-                <span className="brand_name_text">ASB-Woodline</span>
-                <span className="brand_name_text">AVS</span>
-                <span className="brand_name_text">Alma Ceramica</span>
-                <span className="brand_name_text">Alvaro-Banos</span>
-                <span className="brand_name_text">Am.Pm</span>
-                <span className="brand_name_text">Apecs</span>
-                <span className="brand_name_text">Appetite</span>
-                <span className="brand_name_text">Attribute</span>
-                <span className="brand_name_text">Auto Standart</span>
-                <span className="brand_name_text">Axima</span>
-                <span className="brand_name_text">Azario</span>
-              </div>
-            </div>
-          </div>
+              <hr className="brands_divider" />
+            </>   
+          )) :null}
         </div>
       </section>
     </>

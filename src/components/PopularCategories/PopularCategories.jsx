@@ -1,5 +1,4 @@
 import "./popularcategories.scss";
-import { popularCategoriesData } from "../../assets/data";
 import { useNavigate } from "react-router-dom";
 import CategoryService from "../../service/CategoryService";
 import { useState } from "react";
