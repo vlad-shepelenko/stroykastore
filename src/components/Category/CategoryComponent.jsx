@@ -4,9 +4,14 @@ import { Divider } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { productCategoryData } from "../../assets/data";
 import useResizeObserver from "@react-hook/resize-observer";
-import { useLayoutEffect, useState, useRef } from "react";
+import { useLayoutEffect, useState, useRef, useContext } from "react";
 import { buttonFilters } from "../../assets/images";
 import { Modal } from "antd";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import ProductService from '../../service/ProductService';
+import { useNavigate } from "react-router-dom";
+
 
 const useSize = (target) => {
   const [size, setSize] = useState();
@@ -19,7 +24,15 @@ const useSize = (target) => {
 };
 
 const CategoryComponent = () => {
-  const target = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const subcategoryName = location.state.subs;
+  const dataProd = location.state.products;
+
+  console.log(subcategoryName)
+  console.log(dataProd)
+
+  const target = useRef(null); 
   const size = useSize(target);
   const [show, setShow] = useState(false);
 
@@ -27,9 +40,30 @@ const CategoryComponent = () => {
     setShow(false);
   };
 
+  useEffect(() => {
+    console.log("jopa")
+  })
+
   const onChange = (e) => {
     console.log(`checked = ${e.target.checked}`);
   };
+
+  const handleGoToProduct = async (id) => {
+    console.log(id)
+    const dataProduct = await getProductById(id)
+    const {product, supplier} = dataProduct
+    navigate('/product', {state: {product, supplier}})
+  }
+
+  async function getProductById(id){
+    try{
+      const response = await ProductService.getProductById(id);
+      return(response.data)
+    }catch(e){
+      console.log(e)
+    }
+  }
+
   const data = [
     "Test",
     "Test",
@@ -47,14 +81,15 @@ const CategoryComponent = () => {
     "Test",
     "Test",
   ];
+
   return (
     <>
       <section ref={target} className="category_section">
         <div className="category_header_section">
           <span className="category_header_navigation">
-            Главная → Каталог → Стройматериалы → Сухие смеси
+            Главная → Каталог → Стройматериалы → {subcategoryName}
           </span>
-          <h1 className="category_header_title">Сухие смеси</h1>
+          <h1 className="category_header_title">{subcategoryName}</h1>
         </div>
         <div className="category_products_section">
           <div className="category_products_filter">
@@ -102,7 +137,7 @@ const CategoryComponent = () => {
                       dataLength={data.length}
                       hasMore={data.length < 50}
                       endMessage={
-                        <Divider plain>It is all, nothing more 🤐</Divider>
+                        <Divider plain>It is all, nothing more</Divider>
                       }
                       scrollableTarget="scrollableDiv"
                     >
@@ -248,28 +283,28 @@ const CategoryComponent = () => {
               <span className="category_products_sort_item">По алфавиту</span>
             </div>
             <div className="category_products_cart_container">
-              {productCategoryData.map((el) => (
-                <div className="category_product_cart" key={el.id}>
+              {dataProd && dataProd.length > 0 ? dataProd.map((el) => (
+                <div onClick={() => handleGoToProduct(el._id)} className="category_product_cart" key={el._id}>
                   <img
                     className="category_product_cart_image"
-                    src={el.image}
+                    src={el.productImage}
                     alt="product"
                   />
                   <div className="category_product_cart_content">
                     <div className="category_product_cart_description">
                       <span className="category_product_cart_name">
-                        {el.name}
+                        {el.productName}
                       </span>
                       <span className="category_product_cart_price">
-                        {el.price}
+                        {el.productPrice}
                       </span>
                     </div>
-                    <button className="category_product_cart_button">
+                    <button onClick={(e) => {e.stopPropagation();console.log("buttonClick")}} className="category_product_cart_button">
                       В корзину
                     </button>
                   </div>
                 </div>
-              ))}
+              )):<h1>По вашему запросу ничего не найдено</h1>}
             </div>
             <Pagination defaultCurrent={1} total={50} />
           </div>
@@ -321,7 +356,7 @@ const CategoryComponent = () => {
                     dataLength={data.length}
                     hasMore={data.length < 50}
                     endMessage={
-                      <Divider plain>It is all, nothing more 🤐</Divider>
+                      <Divider plain>It is all, nothing more </Divider>
                     }
                     scrollableTarget="scrollableDiv"
                   >

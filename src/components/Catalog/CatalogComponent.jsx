@@ -1,10 +1,12 @@
-import { catalogData } from "../../assets/data";
 import "./catalog.scss";
 import CatalogService from "../../service/CatalogService";
+import ProductService from '../../service/ProductService';
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CatalogComponent = () => {
+  const navigate = useNavigate();
   const [catalog, setCatalog] = useState("");
 
   useEffect(() => {
@@ -19,6 +21,23 @@ const CatalogComponent = () => {
     }
   }
 
+  const handleChangeSubcategory = async (e) => {
+    const subcategory = e.currentTarget.innerText;
+    const dataProducts = await getSubcategoryProduct(subcategory);
+
+    navigate('/category', {state: {subs: subcategory, products: dataProducts}})
+  }
+
+  async function getSubcategoryProduct(sub){
+    try{
+      const response = await ProductService.getSubcategoryProducts(sub);
+      return(response.data)
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
+
   return (
     <>
       <section className="catalog_section">
@@ -29,7 +48,7 @@ const CatalogComponent = () => {
         <div className="catalog_categories_container">
           {catalog
             ? catalog.map((el) => (
-                <div className="catalog_cart_container">
+                <div key={Object.keys(el)[0]} className="catalog_cart_container">
                   <div
                     className="catalog_image_container"
                     key={Object.keys(el)[0]}
@@ -44,9 +63,9 @@ const CatalogComponent = () => {
                     />
                   </div>
                   <div className="catalog_categories">
-                    {Object.values(el)[0].map((ctg) => (
-                      <span className="catalog_category_text">{ctg}</span>
-                    ))}
+                    {catalog ? Object.values(el)[0].map((ctg) => (
+                      <span onClick={(e) => handleChangeSubcategory(e)} className="catalog_category_text">{ctg}</span>
+                    )): null}
                   </div>
                 </div>
               ))
