@@ -2,6 +2,7 @@ import { Navbar } from "../../components/Navbar";
 import { Header } from "../../components/Header";
 import { CartComponent } from "../../components/Cart";
 import { Footer } from "../../components/Footer";
+import {observer} from "mobx-react-lite";
 import "./cartpage.scss";
 
 const CartPage = () => {
@@ -17,4 +18,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default observer(CartPage);

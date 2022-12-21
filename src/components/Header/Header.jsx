@@ -10,10 +10,12 @@ import {
 import { useState, useEffect, useRef } from "react";
 import useResizeObserver from "@react-hook/resize-observer";
 import { useLayoutEffect } from "react";
-import { Modal, Space, message } from "antd";
+import { Modal, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../index";
 import { useContext } from "react";
+import { toJS } from "mobx";
+import CartService from "../../service/CartService";
 
 const useSize = (target) => {
   const [size, setSize] = useState();
@@ -90,6 +92,18 @@ const Header = () => {
       store.registration(emailRegistration, passwordRegistration);
     }
   };
+
+  const handleGoToCart = async () => {
+    try{
+      const user = toJS(store.user)
+      const response = await CartService.getCartById(user.id);
+      navigate('/cart', {state: {data: response.data}})
+    }
+    catch(e){
+      console.log(e)
+    }
+  }
+
   return (
     <>
       {contextHolder}
@@ -113,7 +127,7 @@ const Header = () => {
               </span>
             </section>
             <section className="buttons">
-              <div className="button_catalog">
+              <div onClick={() => navigate("/catalog")} className="button_catalog">
                 <object
                   data={catalog}
                   type="image/svg+xml"
@@ -152,15 +166,13 @@ const Header = () => {
                   />
                   <span className="button_unit_text">Заказы</span>
                 </div>
-                <div className="button_unit">
+                <div onClick={handleGoToCart} className="button_unit">
                   <img src={cart} className="button_unit_image" alt="cart" />
                   <span className="button_unit_text">Корзина</span>
                 </div>
               </div>
             </section>
-            <object data={cart} type="image/svg+xml" className="cart">
-              Cart
-            </object>
+            <img onClick={handleGoToCart} src={cart} alt="cart" className="cart" />
           </section>
         </section>
         <section className="search_button_mob_section">
@@ -177,7 +189,7 @@ const Header = () => {
           className="opened_menu"
         >
           <section className="mobile_menu">
-            <div className="button_catalog">
+            <div onClick={() => navigate("/catalog")} className="button_catalog">
               <object
                 data={catalog}
                 type="image/svg+xml"

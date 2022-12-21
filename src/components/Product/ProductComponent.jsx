@@ -1,12 +1,20 @@
+import { useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Context } from "../..";
 import { productCategory, deliveryProduct } from "../../assets/images";
 import "./product.scss";
 
 const ProductComponent = () => {
-  const navigate = useNavigate();
   const location = useLocation();
+  const {store} = useContext(Context)
   const product = location.state.product;
   const supplier = location.state.supplier;
+
+  useEffect(() => {
+    if(localStorage.getItem('token')){
+      store.checkAuth();
+    }
+  }, [])
 
   return (
     <>

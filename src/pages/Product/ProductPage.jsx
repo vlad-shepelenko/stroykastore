@@ -2,6 +2,7 @@ import { Navbar } from "../../components/Navbar";
 import { Header } from "../../components/Header";
 import { ProductComponent } from "../../components/Product";
 import { Footer } from "../../components/Footer";
+import {observer} from "mobx-react-lite";
 import "./productpage.scss";
 
 const ProductPage = () => {
@@ -17,4 +18,4 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default observer(ProductPage);

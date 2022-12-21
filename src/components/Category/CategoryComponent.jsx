@@ -1,8 +1,6 @@
 import "./category.scss";
-import { Slider, Select, Pagination, Checkbox } from "antd";
-import { Divider } from "react";
+import { Slider, Select, Pagination, Checkbox, message } from "antd";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { productCategoryData } from "../../assets/data";
 import useResizeObserver from "@react-hook/resize-observer";
 import { useLayoutEffect, useState, useRef, useContext } from "react";
 import { buttonFilters } from "../../assets/images";
@@ -10,7 +8,11 @@ import { Modal } from "antd";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ProductService from '../../service/ProductService';
+import CartService from '../../service/CartService';
 import { useNavigate } from "react-router-dom";
+import { Context } from "../..";
+import {observer} from "mobx-react-lite";
+import { toJS } from "mobx";
 
 
 const useSize = (target) => {
@@ -26,6 +28,10 @@ const useSize = (target) => {
 const CategoryComponent = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [auth, setAuth] = useState('')
+  const [userId, setUserId] = useState('')
+  const {store} = useContext(Context)
+  const [messageApi, contextHolder] = message.useMessage();
   const subcategoryName = location.state.subs;
   const dataProd = location.state.products;
 
@@ -42,7 +48,8 @@ const CategoryComponent = () => {
 
   useEffect(() => {
     console.log("jopa")
-  })
+    setAuth(store.isAuth)
+  },[])
 
   const onChange = (e) => {
     console.log(`checked = ${e.target.checked}`);
@@ -64,6 +71,43 @@ const CategoryComponent = () => {
     }
   }
 
+  const handleAddToCart = async(e, product) => {
+    e.stopPropagation();
+    if(auth){
+      try{
+        const user = toJS(store.user)
+        const response = await CartService.setCart(user.id, product, 1)
+        successAuthorization()
+        return response.data
+      }
+      catch(e){
+        console.log(e)
+      }
+    }
+    else{
+      console.log("not authorized")
+      errorAuthorization()
+    }
+    console.log("buttonClick")
+  }
+
+  const errorAuthorization = () => {
+    messageApi.open({
+      type: "error",
+      content: 
+        "Вы не авторизованы! Для добавления товара в корзину авторизуйтесь!"
+    })
+  }
+
+  const successAuthorization = () => {
+    messageApi.open({
+      type: "success",
+      content: 
+        "Товар успешно добавлен в корзину!"
+    })
+  }
+  console.log(userId)
+  console.log(auth)
   const data = [
     "Test",
     "Test",
@@ -84,6 +128,7 @@ const CategoryComponent = () => {
 
   return (
     <>
+    {contextHolder}
       <section ref={target} className="category_section">
         <div className="category_header_section">
           <span className="category_header_navigation">
@@ -136,9 +181,6 @@ const CategoryComponent = () => {
                     <InfiniteScroll
                       dataLength={data.length}
                       hasMore={data.length < 50}
-                      endMessage={
-                        <Divider plain>It is all, nothing more</Divider>
-                      }
                       scrollableTarget="scrollableDiv"
                     >
                       <div className="brand_name_filter">
@@ -299,7 +341,7 @@ const CategoryComponent = () => {
                         {el.productPrice}
                       </span>
                     </div>
-                    <button onClick={(e) => {e.stopPropagation();console.log("buttonClick")}} className="category_product_cart_button">
+                    <button onClick={(e) => handleAddToCart(e, el._id)} className="category_product_cart_button">
                       В корзину
                     </button>
                   </div>
@@ -355,9 +397,6 @@ const CategoryComponent = () => {
                   <InfiniteScroll
                     dataLength={data.length}
                     hasMore={data.length < 50}
-                    endMessage={
-                      <Divider plain>It is all, nothing more </Divider>
-                    }
                     scrollableTarget="scrollableDiv"
                   >
                     <div className="brand_name_filter">
@@ -489,4 +528,4 @@ const CategoryComponent = () => {
   );
 };
 
-export default CategoryComponent;
+export default observer(CategoryComponent);

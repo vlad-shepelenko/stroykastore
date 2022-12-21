@@ -1,5 +1,8 @@
 import { makeAutoObservable } from "mobx";
 import AuthService from "../service/AuthService";
+import axios from "axios";
+
+const API_URL = `http://localhost:5000/api`
 
 export default class Store {
     user = {};
@@ -53,6 +56,19 @@ export default class Store {
             this.setUser({})
         }
         catch (e) {
+            console.log(e.response?.data?.message)
+        }
+    }
+
+    async checkAuth(){
+        try{
+            const response = await axios.get(`${API_URL}/refresh`, {withCredentials: true})
+            //console.log(response)
+            localStorage.setitem('token', response.data.accessToken);
+            this.setAuth(true);
+            this.setUser(response.data.user);
+        }
+        catch(e){
             console.log(e.response?.data?.message)
         }
     }

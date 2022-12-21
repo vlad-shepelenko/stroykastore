@@ -2,7 +2,8 @@ import { Home, Brands, Delivery, Refunds, Documentation, Contacts, Profile, Cata
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './assets/styles/global_style.scss'
 import {observer} from "mobx-react-lite";
-import { createContext } from 'react';
+import { createContext, useContext, useEffect} from 'react';
+import { Context } from './index';
 
 export const SubContext = createContext();
 

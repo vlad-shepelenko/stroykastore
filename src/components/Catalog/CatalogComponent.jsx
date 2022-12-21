@@ -12,6 +12,7 @@ const CatalogComponent = () => {
   useEffect(() => {
     getCatalog();
   }, []);
+  
   async function getCatalog() {
     try {
       const response = await CatalogService.getCatalog();
