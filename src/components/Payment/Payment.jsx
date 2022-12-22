@@ -4,6 +4,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
 import PaymentService from "../../service/PaymentService";
+import OrderService from "../../service/OrderService";
 
 const Payment = (price, data) => {
   const [stripePromise, setStripePromise] = useState(null);
@@ -25,14 +26,21 @@ const Payment = (price, data) => {
     user = el.info.user;
   });
 
-  console.log(user);
-  console.log(status);
-  console.log(arrayProduct);
-  console.log(today);
+  let obj = {
+    userId: user,
+    status,
+    products: arrayProduct,
+    data: today,
+  };
+  console.log(obj);
   //console.log(price.data);
   useEffect(() => {
     getConfig();
   }, []);
+
+  const setOrder = async () => {
+    const response = await 
+  }
 
   const getConfig = async () => {
     const response = await PaymentService.getConfig();
@@ -52,6 +60,7 @@ const Payment = (price, data) => {
     setClientSecret(clientSecret);
     console.log(response);
   };
+
   return (
     <>
       <h1>Оплата</h1>
