@@ -94,15 +94,14 @@ const Header = () => {
   };
 
   const handleGoToCart = async () => {
-    try{
-      const user = toJS(store.user)
+    try {
+      const user = toJS(store.user);
       const response = await CartService.getCartById(user.id);
-      navigate('/cart', {state: {data: response.data}})
+      navigate("/cart" /*, {state: {data: response.data}}*/);
+    } catch (e) {
+      console.log(e);
     }
-    catch(e){
-      console.log(e)
-    }
-  }
+  };
 
   return (
     <>
@@ -127,7 +126,10 @@ const Header = () => {
               </span>
             </section>
             <section className="buttons">
-              <div onClick={() => navigate("/catalog")} className="button_catalog">
+              <div
+                onClick={() => navigate("/catalog")}
+                className="button_catalog"
+              >
                 <object
                   data={catalog}
                   type="image/svg+xml"
@@ -172,7 +174,12 @@ const Header = () => {
                 </div>
               </div>
             </section>
-            <img onClick={handleGoToCart} src={cart} alt="cart" className="cart" />
+            <img
+              onClick={handleGoToCart}
+              src={cart}
+              alt="cart"
+              className="cart"
+            />
           </section>
         </section>
         <section className="search_button_mob_section">
@@ -189,7 +196,10 @@ const Header = () => {
           className="opened_menu"
         >
           <section className="mobile_menu">
-            <div onClick={() => navigate("/catalog")} className="button_catalog">
+            <div
+              onClick={() => navigate("/catalog")}
+              className="button_catalog"
+            >
               <object
                 data={catalog}
                 type="image/svg+xml"
