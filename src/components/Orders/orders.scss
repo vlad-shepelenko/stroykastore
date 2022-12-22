@@ -50,6 +50,11 @@
   margin: 40px 140px 80px 140px;
 }
 
+.order_product_section{
+  display: flex;
+  flex-direction: column;
+}
+
 .order_description {
   display: flex;
   flex-direction: column;
@@ -99,6 +104,11 @@
   color: #2f323a;
 }
 
+.not_marg{
+  margin: 0 !important;
+  height: auto !important;
+}
+
 .order_id,
 .order_status_result {
   font-family: $font;
@@ -107,6 +117,7 @@
   font-size: 16px;
   line-height: 22px;
   color: #2f323a;
+  overflow-wrap: break-word;
 }
 
 .order_status_container {
@@ -215,7 +226,6 @@
     margin: 0 22px;
     flex-direction: column;
     width: 316px;
-    height: 485px;
   }
 
   .order_image {

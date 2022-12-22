@@ -5,13 +5,33 @@ import {
 } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import "./chekoutform.scss";
+import OrderService from "../../service/OrderService";
+import axios from "axios";
 
-const CheckoutForm = () => {
+const CheckoutForm = (data) => {
   const stripe = useStripe();
   const elements = useElements();
-
+  const obj = data.data;
   const [message, setMessage] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
+
+  const setOrder = async (order) => {
+    const response = await OrderService.setOrder(order);
+    console.log(response);
+  }
+
+  const deleteUserCart = async (id) => {
+    try{
+          console.log(id)
+          const response = axios.delete(
+            `http://localhost:5000/api/deleteUserCartById/${id}`
+          );
+    }
+    catch(e){
+      console.log(e)
+    }
+
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +54,8 @@ const CheckoutForm = () => {
     } else {
       setMessage("Непредвиденная ошибка");
     }
-
+    setOrder([obj])
+    deleteUserCart(obj.userId)
     setIsProcessing(false);
   };
 

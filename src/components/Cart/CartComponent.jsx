@@ -45,16 +45,19 @@ const CartComponent = () => {
   };
 
   const getCartById = async (user) => {
+    console.log(user)
     const response = await CartService.getCartById(user);
     setData(response.data);
   };
-
+  console.log(data)
   let count = 0;
   let price = 0;
-  data.map((el) => {
+  if(data.length > 0){
+    data.map((el) => {
     count = count + el.info.count;
     price = price + el.info.count * el.product.productPrice;
   });
+}
   console.log(price.toFixed(2));
   console.log(count);
   const handleIncrement = (id) => {

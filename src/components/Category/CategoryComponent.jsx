@@ -37,6 +37,7 @@ const CategoryComponent = () => {
 
   console.log(subcategoryName)
   console.log(dataProd)
+  console.log(dataProd.length)
 
   const target = useRef(null); 
   const size = useSize(target);
@@ -179,8 +180,8 @@ const CategoryComponent = () => {
                     }}
                   >
                     <InfiniteScroll
-                      dataLength={data.length}
-                      hasMore={data.length < 50}
+                      dataLength={dataProd.length}
+                      hasMore={dataProd.length < 50}
                       scrollableTarget="scrollableDiv"
                     >
                       <div className="brand_name_filter">

@@ -6,7 +6,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import PaymentService from "../../service/PaymentService";
 import OrderService from "../../service/OrderService";
 
-const Payment = (price, data) => {
+const Payment = (price) => {
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
   const setData = price.data;
@@ -32,15 +32,10 @@ const Payment = (price, data) => {
     products: arrayProduct,
     data: today,
   };
-  console.log(obj);
-  //console.log(price.data);
+  
   useEffect(() => {
     getConfig();
   }, []);
-
-  const setOrder = async () => {
-    const response = await 
-  }
 
   const getConfig = async () => {
     const response = await PaymentService.getConfig();
@@ -66,7 +61,7 @@ const Payment = (price, data) => {
       <h1>Оплата</h1>
       {clientSecret && stripePromise && (
         <Elements stripe={stripePromise} options={{ clientSecret }}>
-          <CheckoutForm />
+          <CheckoutForm data={obj} />
         </Elements>
       )}
     </>

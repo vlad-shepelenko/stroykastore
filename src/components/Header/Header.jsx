@@ -16,6 +16,7 @@ import { Context } from "../../index";
 import { useContext } from "react";
 import { toJS } from "mobx";
 import CartService from "../../service/CartService";
+import OrderService from "../../service/OrderService";
 
 const useSize = (target) => {
   const [size, setSize] = useState();
@@ -39,9 +40,17 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(true);
   const [messageApi, contextHolder] = message.useMessage();
   const [showSlider, setShowSlider] = useState(true);
+  const [ordersData, setOrdersData] = useState([])
   const target = useRef(null);
   const size = useSize(target);
   const { store } = useContext(Context);
+
+  const handleGoToOrders = async () => {
+    const user = toJS(store.user);
+    const response = await OrderService.getOrdersById(user.id);
+    setOrdersData(response.data);
+    navigate("/orders", {state: {data: ordersData}})
+  }
 
   const handleCancel = () => {
     setLogin(false);
@@ -160,7 +169,7 @@ const Header = () => {
                     Профиль
                   </span>
                 </div>
-                <div className="button_unit">
+                <div onClick={handleGoToOrders} className="button_unit">
                   <img
                     src={orders}
                     className="button_unit_image"
@@ -219,14 +228,12 @@ const Header = () => {
               </object>
               <span className="button_unit_text">Профиль</span>
             </div>
-            <div className="button_unit">
-              <object
-                data={orders}
-                type="image/svg+xml"
+            <div onClick={() => navigate("/orders")} className="button_unit">
+              <img
+                src={orders}
+                alt="orders"
                 className="button_unit_image"
-              >
-                Orders
-              </object>
+               />
               <span className="button_unit_text">Заказы</span>
             </div>
           </section>
