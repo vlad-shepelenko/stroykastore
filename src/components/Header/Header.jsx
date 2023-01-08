@@ -16,6 +16,7 @@ import { Context } from "../../index";
 import { useContext } from "react";
 import { toJS } from "mobx";
 import CartService from "../../service/CartService";
+import ProductService from "../../service/ProductService";
 import OrderService from "../../service/OrderService";
 
 const useSize = (target) => {
@@ -40,7 +41,8 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(true);
   const [messageApi, contextHolder] = message.useMessage();
   const [showSlider, setShowSlider] = useState(true);
-  const [ordersData, setOrdersData] = useState([])
+  const [ordersData, setOrdersData] = useState([]);
+  const [searchName, setSearchName] = useState("");
   const target = useRef(null);
   const size = useSize(target);
   const { store } = useContext(Context);
@@ -49,8 +51,20 @@ const Header = () => {
     const user = toJS(store.user);
     const response = await OrderService.getOrdersById(user.id);
     setOrdersData(response.data);
-    navigate("/orders", {state: {data: ordersData}})
-  }
+    navigate("/orders", { state: { data: ordersData } });
+  };
+
+  const searchChange = (event) => {
+    setSearchName(event.target.value);
+  };
+
+  const handleKeyDown = async (event) => {
+    if (event.key === "Enter") {
+      const response = await ProductService.getSearchProducts(searchName);
+      const dataProducts = response.data;
+      navigate("/category", { state: { products: dataProducts } });
+    }
+  };
 
   const handleCancel = () => {
     setLogin(false);
@@ -153,6 +167,9 @@ const Header = () => {
                 type="text"
                 placeholder="Поиск"
                 className="search_button"
+                value={searchName}
+                onKeyDown={handleKeyDown}
+                onChange={searchChange}
               ></input>
               <div className="buttons_section">
                 <div onClick={() => setLogin(true)} className="button_unit">
@@ -229,11 +246,7 @@ const Header = () => {
               <span className="button_unit_text">Профиль</span>
             </div>
             <div onClick={() => navigate("/orders")} className="button_unit">
-              <img
-                src={orders}
-                alt="orders"
-                className="button_unit_image"
-               />
+              <img src={orders} alt="orders" className="button_unit_image" />
               <span className="button_unit_text">Заказы</span>
             </div>
           </section>

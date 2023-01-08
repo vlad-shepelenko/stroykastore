@@ -7,13 +7,14 @@ import { buttonFilters } from "../../assets/images";
 import { Modal } from "antd";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import ProductService from '../../service/ProductService';
-import CartService from '../../service/CartService';
+import BrandsService from "../../service/BrandsService";
+import ProductService from "../../service/ProductService";
+import CartService from "../../service/CartService";
+import SupplierService from "../../service/SupplierService";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../..";
-import {observer} from "mobx-react-lite";
+import { observer } from "mobx-react-lite";
 import { toJS } from "mobx";
-
 
 const useSize = (target) => {
   const [size, setSize] = useState();
@@ -28,18 +29,29 @@ const useSize = (target) => {
 const CategoryComponent = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [auth, setAuth] = useState('')
-  const [userId, setUserId] = useState('')
-  const {store} = useContext(Context)
+  const [auth, setAuth] = useState("");
+  const [userId, setUserId] = useState("");
+  const { store } = useContext(Context);
   const [messageApi, contextHolder] = message.useMessage();
   const subcategoryName = location.state.subs;
-  const dataProd = location.state.products;
+  const [dataProd, setDataProd] = useState(location.state.products);
+  const [count, setCount] = useState(0);
+  const [brands, setBrands] = useState("");
+  const [supplier, setSupplier] = useState("");
+  const [searchName, setSearchName] = useState("");
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
+  const [changedMinPrice, setChangedMinPrice] = useState(0);
+  const [changedMaxPrice, setChangedMaxPrice] = useState(0);
+  const [supplierId, setSupplierId] = useState("");
 
-  console.log(subcategoryName)
-  console.log(dataProd)
-  console.log(dataProd.length)
+  let filteredBrand = [];
 
-  const target = useRef(null); 
+  console.log(subcategoryName);
+  console.log(dataProd);
+  console.log(dataProd.length);
+
+  const target = useRef(null);
   const size = useSize(target);
   const [show, setShow] = useState(false);
 
@@ -48,67 +60,172 @@ const CategoryComponent = () => {
   };
 
   useEffect(() => {
-    console.log("jopa")
-    setAuth(store.isAuth)
-  },[])
+    setAuth(store.isAuth);
+  }, []);
 
-  const onChange = (e) => {
-    console.log(`checked = ${e.target.checked}`);
+  useEffect(() => {
+    getBrands();
+    getSuppliers();
+    getProducts();
+  }, []);
+
+  const getBrands = async () => {
+    const brandsArray = await BrandsService.getAllBrands();
+    setBrands(brandsArray.data);
+  };
+
+  const getProducts = async () => {
+    const productsArray = await ProductService.getProducts();
+    console.log(productsArray.data);
+
+    setMinPrice(
+      productsArray.data.sort(byFieldAsc("productPrice"))[0].productPrice
+    );
+    setMaxPrice(
+      productsArray.data.sort(byFieldDesc("productPrice"))[0].productPrice
+    );
+    setChangedMinPrice(minPrice);
+    setChangedMaxPrice(maxPrice);
+    console.log("MAX", maxPrice);
+    console.log("MIN", minPrice);
+  };
+
+  console.log("MAX", maxPrice);
+  console.log("MIN", minPrice);
+  const getSuppliers = async () => {
+    const suppliersArray = await SupplierService.getSuppliers();
+    const arrayData = suppliersArray.data;
+    const suppliers = [];
+    arrayData.map((el) => {
+      suppliers.push({ value: el._id, label: el.supplierName });
+      console.log(el);
+    });
+    setSupplier(suppliers);
+  };
+
+  const onChange = (e, brand) => {
+    console.log(brand);
+    filteredBrand.push(brand._id);
+  };
+
+  const onSliderChange = (e) => {
+    setChangedMinPrice(e[0]);
+    setChangedMaxPrice(e[1]);
+  };
+
+  const supplierChange = (e) => {
+    setSupplierId(e);
+  };
+
+  const filterProducts = async () => {
+    console.log(filteredBrand);
+    await ProductService.getFilterProducts(
+      changedMinPrice,
+      changedMaxPrice,
+      filteredBrand,
+      supplierId
+    );
   };
 
   const handleGoToProduct = async (id) => {
-    console.log(id)
-    const dataProduct = await getProductById(id)
-    const {product, supplier} = dataProduct
-    navigate('/product', {state: {product, supplier}})
-  }
+    console.log(id);
+    const dataProduct = await getProductById(id);
+    const { product, supplier } = dataProduct;
+    navigate("/product", { state: { product, supplier } });
+  };
 
-  async function getProductById(id){
-    try{
+  async function getProductById(id) {
+    try {
       const response = await ProductService.getProductById(id);
-      return(response.data)
-    }catch(e){
-      console.log(e)
+      return response.data;
+    } catch (e) {
+      console.log(e);
     }
   }
 
-  const handleAddToCart = async(e, product) => {
-    e.stopPropagation();
-    if(auth){
-      try{
-        const user = toJS(store.user)
-        const response = await CartService.setCart(user.id, product, 1)
-        successAuthorization()
-        return response.data
-      }
-      catch(e){
-        console.log(e)
-      }
-    }
-    else{
-      console.log("not authorized")
-      errorAuthorization()
-    }
-    console.log("buttonClick")
+  const sortByAsc = (fieldName) => {
+    console.log(fieldName);
+    let data = dataProd.sort(byFieldAsc(`${fieldName}`));
+    setDataProd(data);
+    setCount(count + 1);
+    console.log(dataProd);
+  };
+
+  const sortByDesc = (fieldName) => {
+    let data = dataProd.sort(byFieldDesc(`${fieldName}`));
+    setDataProd(data);
+    setCount(count + 1);
+    console.log(dataProd);
+  };
+
+  function byFieldAsc(field) {
+    return (a, b) => (a[field] > b[field] ? 1 : -1);
   }
+
+  function byFieldDesc(field) {
+    return (a, b) => (a[field] < b[field] ? 1 : -1);
+  }
+
+  const handleAddToCart = async (e, product) => {
+    e.stopPropagation();
+    if (auth) {
+      try {
+        const user = toJS(store.user);
+        const response = await CartService.setCart(user.id, product, 1);
+        successAuthorization();
+        return response.data;
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      console.log("not authorized");
+      errorAuthorization();
+    }
+    console.log("buttonClick");
+  };
 
   const errorAuthorization = () => {
     messageApi.open({
       type: "error",
-      content: 
-        "Вы не авторизованы! Для добавления товара в корзину авторизуйтесь!"
-    })
-  }
+      content:
+        "Вы не авторизованы! Для добавления товара в корзину авторизуйтесь!",
+    });
+  };
+
+  const marks = {
+    0: `${minPrice}`,
+    100: `${maxPrice}`,
+  };
 
   const successAuthorization = () => {
     messageApi.open({
       type: "success",
-      content: 
-        "Товар успешно добавлен в корзину!"
-    })
-  }
-  console.log(userId)
-  console.log(auth)
+      content: "Товар успешно добавлен в корзину!",
+    });
+  };
+
+  const handleSearch = (event) => {
+    setSearchName(event.target.value);
+  };
+
+  const handleKeyDown = async (event) => {
+    if (event.key === "Enter") {
+      let searchBrand = [];
+      brands.map((el) => {
+        console.log(el.brandName.match(`${searchName}`));
+        if (el.brandName.match(searchName) !== null) {
+          searchBrand.push(el);
+        }
+      });
+
+      setBrands(searchBrand);
+      if (searchName.length === 0) getBrands();
+      console.log(brands);
+    }
+  };
+
+  console.log(userId);
+  console.log(auth);
   const data = [
     "Test",
     "Test",
@@ -129,7 +246,7 @@ const CategoryComponent = () => {
 
   return (
     <>
-    {contextHolder}
+      {contextHolder}
       <section ref={target} className="category_section">
         <div className="category_header_section">
           <span className="category_header_navigation">
@@ -144,28 +261,34 @@ const CategoryComponent = () => {
                 <label className="category_products_filter_label">Цена</label>
                 <div className="category_products_filter_price_container">
                   <input
+                    disabled="false"
                     className="category_products_filter_price_input"
-                    type="text"
-                    placeholder="10"
+                    type="number"
+                    placeholder={changedMinPrice}
                   />
                   <input
+                    disabled="false"
                     className="category_products_filter_price_input"
-                    type="text"
-                    placeholder="1000"
+                    type="number"
+                    placeholder={changedMaxPrice}
                   />
                 </div>
                 <Slider
-                  range={{
-                    draggableTrack: true,
-                  }}
-                  defaultValue={[20, 50]}
+                  range
+                  marks={marks}
+                  defaultValue={[0, 100]}
+                  onAfterChange={onSliderChange}
+                  min={minPrice}
+                  max={maxPrice}
                 />
               </section>
               <div className="category_products_filter_brand">
                 <span className="category_products_filter_label">Бренд</span>
                 <input
+                  onChange={handleSearch}
+                  onKeyDown={handleKeyDown}
                   className="category_products_filter_search"
-                  type="search"
+                  type="text"
                   placeholder="Поиск"
                 />
                 <div>
@@ -180,76 +303,19 @@ const CategoryComponent = () => {
                     }}
                   >
                     <InfiniteScroll
-                      dataLength={dataProd.length}
+                      dataLength={20}
                       hasMore={dataProd.length < 50}
                       scrollableTarget="scrollableDiv"
                     >
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
-                      <div className="brand_name_filter">
-                        <Checkbox onChange={onChange}>Jopa</Checkbox>
-                      </div>
+                      {brands
+                        ? brands.map((el) => (
+                            <div className="brand_name_filter">
+                              <Checkbox onChange={(e) => onChange(e, el)}>
+                                {el.brandName}
+                              </Checkbox>
+                            </div>
+                          ))
+                        : null}
                     </InfiniteScroll>
                   </div>
                 </div>
@@ -259,11 +325,12 @@ const CategoryComponent = () => {
                   Поставщик
                 </span>
                 <Select
+                  onChange={supplierChange}
                   showSearch
                   style={{
                     width: 200,
                   }}
-                  placeholder="Search to Select"
+                  placeholder="Выберите поставщика"
                   optionFilterProp="children"
                   filterOption={(input, option) =>
                     (option?.label ?? "").includes(input)
@@ -273,38 +340,16 @@ const CategoryComponent = () => {
                       .toLowerCase()
                       .localeCompare((optionB?.label ?? "").toLowerCase())
                   }
-                  options={[
-                    {
-                      value: "1",
-                      label: "Not Identified",
-                    },
-                    {
-                      value: "2",
-                      label: "Closed",
-                    },
-                    {
-                      value: "3",
-                      label: "Communicated",
-                    },
-                    {
-                      value: "4",
-                      label: "Identified",
-                    },
-                    {
-                      value: "5",
-                      label: "Resolved",
-                    },
-                    {
-                      value: "6",
-                      label: "Cancelled",
-                    },
-                  ]}
+                  options={supplier}
                 />
               </div>
             </section>
             <div className="category_filter_divider" />
             <section className="category_filter_buttons">
-              <button className="category_products_button_apply">
+              <button
+                onClick={filterProducts}
+                className="category_products_button_apply"
+              >
                 Применить
               </button>
               <button className="category_products_button_clear">
@@ -319,35 +364,67 @@ const CategoryComponent = () => {
                 <span>Фильтры</span>
               </div>
             ) : null}
+            {<div style={{ display: "none" }}>count</div>}
             <div className="category_products_sort">
-              <span className="category_products_sort_item">Популярные</span>
-              <span className="category_products_sort_item">Дешевле</span>
-              <span className="category_products_sort_item">Дороже</span>
-              <span className="category_products_sort_item">По алфавиту</span>
+              <span
+                onClick={() => sortByAsc("productName")}
+                className="category_products_sort_item"
+              >
+                По алфавиту (А-Я)
+              </span>
+              <span
+                onClick={() => sortByDesc("productName")}
+                className="category_products_sort_item"
+              >
+                По алфавиту (Я-А)
+              </span>
+              <span
+                onClick={() => sortByAsc("productPrice")}
+                className="category_products_sort_item"
+              >
+                Дешевле
+              </span>
+              <span
+                onClick={() => sortByDesc("productPrice")}
+                className="category_products_sort_item"
+              >
+                Дороже
+              </span>
             </div>
             <div className="category_products_cart_container">
-              {dataProd && dataProd.length > 0 ? dataProd.map((el) => (
-                <div onClick={() => handleGoToProduct(el._id)} className="category_product_cart" key={el._id}>
-                  <img
-                    className="category_product_cart_image"
-                    src={el.productImage}
-                    alt="product"
-                  />
-                  <div className="category_product_cart_content">
-                    <div className="category_product_cart_description">
-                      <span className="category_product_cart_name">
-                        {el.productName}
-                      </span>
-                      <span className="category_product_cart_price">
-                        {el.productPrice}
-                      </span>
+              {dataProd && dataProd.length > 0 ? (
+                dataProd.map((el) => (
+                  <div
+                    onClick={() => handleGoToProduct(el._id)}
+                    className="category_product_cart"
+                    key={el._id}
+                  >
+                    <img
+                      className="category_product_cart_image"
+                      src={el.productImage}
+                      alt="product"
+                    />
+                    <div className="category_product_cart_content">
+                      <div className="category_product_cart_description">
+                        <span className="category_product_cart_name">
+                          {el.productName}
+                        </span>
+                        <span className="category_product_cart_price">
+                          {el.productPrice}
+                        </span>
+                      </div>
+                      <button
+                        onClick={(e) => handleAddToCart(e, el._id)}
+                        className="category_product_cart_button"
+                      >
+                        В корзину
+                      </button>
                     </div>
-                    <button onClick={(e) => handleAddToCart(e, el._id)} className="category_product_cart_button">
-                      В корзину
-                    </button>
                   </div>
-                </div>
-              )):<h1>По вашему запросу ничего не найдено</h1>}
+                ))
+              ) : (
+                <h1>По вашему запросу ничего не найдено</h1>
+              )}
             </div>
             <Pagination defaultCurrent={1} total={50} />
           </div>
@@ -381,7 +458,7 @@ const CategoryComponent = () => {
               <span className="category_products_filter_label">Бренд</span>
               <input
                 className="category_products_filter_search"
-                type="search"
+                type="text"
                 placeholder="Поиск"
               />
               <div>
@@ -396,76 +473,21 @@ const CategoryComponent = () => {
                   }}
                 >
                   <InfiniteScroll
-                    dataLength={data.length}
+                    dataLength={20}
                     hasMore={data.length < 50}
                     scrollableTarget="scrollableDiv"
                   >
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
-                    <div className="brand_name_filter">
-                      <Checkbox onChange={onChange}>Jopa</Checkbox>
-                    </div>
+                    {brands
+                      ? brands.map((el) => (
+                          <div className="brand_name_filter">
+                            <Checkbox
+                              onChange={(e) => onChange(e, el.brandName)}
+                            >
+                              {el.brandName}
+                            </Checkbox>
+                          </div>
+                        ))
+                      : null}
                   </InfiniteScroll>
                 </div>
               </div>
@@ -487,32 +509,7 @@ const CategoryComponent = () => {
                     .toLowerCase()
                     .localeCompare((optionB?.label ?? "").toLowerCase())
                 }
-                options={[
-                  {
-                    value: "1",
-                    label: "Not Identified",
-                  },
-                  {
-                    value: "2",
-                    label: "Closed",
-                  },
-                  {
-                    value: "3",
-                    label: "Communicated",
-                  },
-                  {
-                    value: "4",
-                    label: "Identified",
-                  },
-                  {
-                    value: "5",
-                    label: "Resolved",
-                  },
-                  {
-                    value: "6",
-                    label: "Cancelled",
-                  },
-                ]}
+                options={supplier}
               />
             </div>
           </section>
