@@ -66,6 +66,12 @@ const Header = () => {
     }
   };
 
+  const handleGoToActions = async () => {
+    await navigate("/home");
+    let actionsContainer = await document.getElementById("actions");
+    actionsContainer.scrollIntoView({ block: "start", behavior: "smooth" });
+  };
+
   const handleCancel = () => {
     setLogin(false);
   };
@@ -102,8 +108,10 @@ const Header = () => {
 
   const handleLogin = async () => {
     let { data } = await store.login(email, password);
+    console.log(data);
+    console.log(store.isAuth);
     if (data.user.isActivated === true) {
-      navigate("/profile");
+      setLogin(false);
     } else {
       error();
     }
@@ -172,7 +180,16 @@ const Header = () => {
                 onChange={searchChange}
               ></input>
               <div className="buttons_section">
-                <div onClick={() => setLogin(true)} className="button_unit">
+                <div
+                  onClick={() => {
+                    if (store.isAuth) {
+                      navigate("/profile");
+                    } else {
+                      setLogin(true);
+                    }
+                  }}
+                  className="button_unit"
+                >
                   <img
                     onClick={() => setLogin(true)}
                     src={profile}
@@ -235,7 +252,16 @@ const Header = () => {
               </object>
               <span className="catalog">Каталог</span>
             </div>
-            <div onClick={() => setLogin(true)} className="button_unit">
+            <div
+              onClick={() => {
+                if (store.isAuth) {
+                  navigate("/profile");
+                } else {
+                  setLogin(true);
+                }
+              }}
+              className="button_unit"
+            >
               <object
                 data={profile}
                 type="image/svg+xml"
@@ -263,7 +289,7 @@ const Header = () => {
           <hr className="dividing_line incomplete" />
           <section className="nav_menu">
             <ul>
-              <li>Акции</li>
+              <li onClick={handleGoToActions}>Акции</li>
               <li>Строительные материалы</li>
               <li>Керамическая плитка</li>
               <li>Краски</li>

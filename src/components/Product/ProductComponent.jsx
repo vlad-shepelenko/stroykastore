@@ -6,35 +6,38 @@ import "./product.scss";
 
 const ProductComponent = () => {
   const location = useLocation();
-  const {store} = useContext(Context)
+  const { store } = useContext(Context);
   const product = location.state.product;
   const supplier = location.state.supplier;
 
   useEffect(() => {
-    if(localStorage.getItem('token')){
+    if (localStorage.getItem("token")) {
       store.checkAuth();
     }
-  }, [])
+  }, []);
 
   return (
     <>
       <section className="product_section">
         <span className="product_section_navigation">
-          Главная → Каталог → Стройматериалы → Сухие смеси → Шпатлевка
-          масляно-клеевая 3кг Л-С
+          Главная → Каталог → {product.productName}
         </span>
         <section className="product_general_container">
           <img
             className="product_general_image"
-            src={productCategory}
+            src={product.productImage}
             alt="product"
           />
           <div className="product_general_description">
             <h2 className="product_general_description_name">
               {product.productName}
             </h2>
-            <span className="product_availability">{product.productAvailability ? "В наличии" : "Нет в наличии"}</span>
-            <span className="product_general_description_price">{product.productPrice}</span>
+            <span className="product_availability">
+              {product.productAvailability ? "В наличии" : "Нет в наличии"}
+            </span>
+            <span className="product_general_description_price">
+              {product.productPrice}
+            </span>
             <div className="product_buttons_section">
               <button className="product_tocart">В корзину</button>
               <div className="product_count_section">

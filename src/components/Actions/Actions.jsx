@@ -5,7 +5,7 @@ import "./actions.scss";
 const Actions = () => {
   return (
     <>
-      <section className="actions_container">
+      <section id="actions" className="actions_container">
         <div className="header_actions">
           <h2 className="title_actions">Акции</h2>
           <button className="all_actions">

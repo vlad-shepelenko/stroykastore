@@ -118,13 +118,13 @@ const CategoryComponent = () => {
   };
 
   const filterProducts = async () => {
-    console.log(filteredBrand);
-    await ProductService.getFilterProducts(
+    let test = await ProductService.getFilterProducts(
       changedMinPrice,
       changedMaxPrice,
       filteredBrand,
       supplierId
     );
+    setDataProd(test.data);
   };
 
   const handleGoToProduct = async (id) => {
@@ -182,6 +182,12 @@ const CategoryComponent = () => {
       errorAuthorization();
     }
     console.log("buttonClick");
+  };
+
+  const handleReset = () => {
+    setChangedMinPrice(minPrice);
+    setChangedMaxPrice(maxPrice);
+    setCount(count + 1);
   };
 
   const errorAuthorization = () => {
@@ -352,7 +358,10 @@ const CategoryComponent = () => {
               >
                 Применить
               </button>
-              <button className="category_products_button_clear">
+              <button
+                onClick={handleReset}
+                className="category_products_button_clear"
+              >
                 Сбросить
               </button>
             </section>

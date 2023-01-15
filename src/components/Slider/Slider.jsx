@@ -1,8 +1,17 @@
 import "./slider.scss";
 import ImageSlider, { Slide } from "react-auto-image-slider";
 import { specialoffers, sale } from "../../assets/images";
+import { useNavigate } from "react-router-dom";
 
 const Slider = () => {
+  const navigate = useNavigate();
+
+  const handleGoToActions = async () => {
+    await navigate("/home");
+    let actionsContainer = await document.getElementById("actions");
+    actionsContainer.scrollIntoView({ block: "start", behavior: "smooth" });
+  };
+
   return (
     <>
       <div id="slider_component" className="slider_container">
@@ -18,7 +27,12 @@ const Slider = () => {
                     на строительные материалы <br /> и товары для ремонта
                   </span>
                 </div>
-                <button className="slider_button_more">Подробнее</button>
+                <button
+                  onClick={handleGoToActions}
+                  className="slider_button_more"
+                >
+                  Подробнее
+                </button>
               </div>
               <img className="slider_image" src={specialoffers} alt="special" />
             </div>
@@ -38,7 +52,12 @@ const Slider = () => {
                     появляются товары со скидкой
                   </span>
                 </div>
-                <button className="slider_button_more">Подробнее</button>
+                <button
+                  onClick={handleGoToActions}
+                  className="slider_button_more"
+                >
+                  Подробнее
+                </button>
               </div>
               <img className="slider_image" src={sale} alt="sale" />
             </div>

@@ -152,6 +152,11 @@ input::-webkit-inner-spin-button {
 
 .category_product_cart_image {
   width: 276px;
+  height: 207px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
 }
 
 .category_products_filter_label {
