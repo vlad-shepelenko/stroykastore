@@ -6,6 +6,12 @@
   flex-direction: column;
 }
 
+.brand_cart_image {
+  width: 180px;
+  height: 124px;
+  object-fit: contain;
+}
+
 .header_brands {
   width: 100%;
   display: flex;

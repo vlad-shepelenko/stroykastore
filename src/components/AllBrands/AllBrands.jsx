@@ -2,8 +2,11 @@ import "./allbrands.scss";
 import BrandsService from "../../service/BrandsService";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ProductService from "../../service/ProductService";
 
 const AllBrands = () => {
+  const navigate = useNavigate();
   const [firstLetter, setFirstLetter] = useState("");
   const [firstLetterHeader, setFirstLetterHeader] = useState("");
   const [filteredArray, setFitleredArray] = useState("");
@@ -34,6 +37,15 @@ const AllBrands = () => {
       setFitleredArray(filteredMap);
     }
   };
+
+  const handleGetProducts = async (name) => {
+    console.log(name)
+    const response = await ProductService.getProductByBrandName(name);
+    
+    navigate("/category", {
+      state: { products: response.data },
+    });
+  }
 
   return (
     <>
@@ -75,7 +87,7 @@ const AllBrands = () => {
                     <div className="brands_name_container">
                       {Object.values(el).map((brand) =>
                         brand.map((element) => (
-                          <span className="brand_name_text">{element}</span>
+                          <span onClick={() => handleGetProducts(element)} className="brand_name_text">{element}</span>
                         ))
                       )}
                     </div>

@@ -10,6 +10,11 @@
   gap: 20px;
 }
 
+.cart_product_image{
+  width: 278px;
+  object-fit: contain;
+}
+
 .cart_navigation {
   font-family: $font;
   font-style: normal;

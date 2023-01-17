@@ -8,4 +8,8 @@ export default class BrandsService {
     static getAllBrands() {
         return $api.get('/getAllBrands')
     }
+
+    static getPopularBrands(){
+        return $api.get('/getPopularBrands')
+    }
 }

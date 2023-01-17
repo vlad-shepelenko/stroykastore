@@ -118,6 +118,7 @@ const CategoryComponent = () => {
   };
 
   const filterProducts = async () => {
+    setShow(false)
     let test = await ProductService.getFilterProducts(
       changedMinPrice,
       changedMaxPrice,
@@ -256,7 +257,7 @@ const CategoryComponent = () => {
       <section ref={target} className="category_section">
         <div className="category_header_section">
           <span className="category_header_navigation">
-            Главная → Каталог → Стройматериалы → {subcategoryName}
+            Главная → Каталог → {subcategoryName}
           </span>
           <h1 className="category_header_title">{subcategoryName}</h1>
         </div>
@@ -445,23 +446,27 @@ const CategoryComponent = () => {
             <section className="category_filter_price">
               <label className="category_products_filter_label">Цена</label>
               <div className="category_products_filter_price_container">
-                <input
-                  className="category_products_filter_price_input"
-                  type="text"
-                  placeholder="10"
-                />
-                <input
-                  className="category_products_filter_price_input"
-                  type="text"
-                  placeholder="1000"
-                />
+              <input
+                    disabled="false"
+                    className="category_products_filter_price_input"
+                    type="number"
+                    placeholder={changedMinPrice}
+                  />
+                  <input
+                    disabled="false"
+                    className="category_products_filter_price_input"
+                    type="number"
+                    placeholder={changedMaxPrice}
+                  />
               </div>
               <Slider
-                range={{
-                  draggableTrack: true,
-                }}
-                defaultValue={[20, 50]}
-              />
+                  range
+                  marks={marks}
+                  defaultValue={[0, 100]}
+                  onAfterChange={onSliderChange}
+                  min={minPrice}
+                  max={maxPrice}
+                />
             </section>
             <div className="category_products_filter_brand">
               <span className="category_products_filter_label">Бренд</span>
@@ -524,10 +529,10 @@ const CategoryComponent = () => {
           </section>
           <div className="category_filter_divider" />
           <section className="category_filter_buttons">
-            <button className="category_products_button_apply">
+            <button onClick={filterProducts} className="category_products_button_apply">
               Применить
             </button>
-            <button className="category_products_button_clear">Сбросить</button>
+            <button onClick={handleReset} className="category_products_button_clear">Сбросить</button>
           </section>
         </div>
       </Modal>

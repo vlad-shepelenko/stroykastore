@@ -23,4 +23,20 @@ export default class ProductService {
     static async getFilterProducts(minPrice, maxPrice, brands, supplier) {
         return $api.post('/getFilterProducts', { minPrice, maxPrice, brands, supplier })
     }
+
+    static async getProductsByCategoryId(id){
+        return $api.post('/getProductsByCategoryId', {id})
+    }
+
+    static async getPopularProducts(){
+        return $api.get('/getPopularProducts')
+    }
+
+    static async getProductsByBrandId(id){
+        return $api.post('/getProductsByBrandId', {id})
+    }
+
+    static async getProductByBrandName(name){
+        return $api.post('/getProductByBrandName', {name})
+    }
 }

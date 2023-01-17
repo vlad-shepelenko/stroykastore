@@ -156,7 +156,7 @@ input::-webkit-inner-spin-button {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .category_products_filter_label {
@@ -326,6 +326,7 @@ input::-webkit-inner-spin-button {
 
 .category_products_container {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 16px;
 }

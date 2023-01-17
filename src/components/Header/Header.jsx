@@ -134,6 +134,14 @@ const Header = () => {
     }
   };
 
+  const handleGoToProducts = async (id) => {
+    console.log(id)
+    const products = await ProductService.getProductsByCategoryId(id)
+    console.log(products.data)
+    await navigate("/home")
+    await navigate("/category", {state: {products: products.data}})
+  }
+
   return (
     <>
       {contextHolder}
@@ -290,14 +298,14 @@ const Header = () => {
           <section className="nav_menu">
             <ul>
               <li onClick={handleGoToActions}>Акции</li>
-              <li>Строительные материалы</li>
-              <li>Керамическая плитка</li>
-              <li>Краски</li>
-              <li>Сантехника</li>
-              <li>Напольные покрытия</li>
-              <li>Инструменты</li>
-              <li>Обои</li>
-              <li>Окна</li>
+              <li onClick={() => handleGoToProducts("63a027207625eb5e7cad15ef")}>Строительные материалы</li>
+              <li onClick={() => handleGoToProducts("63a02743a677a01040228cea")}>Керамическая плитка</li>
+              <li onClick={() => handleGoToProducts("63a02743a677a01040228cee")}>Краски</li>
+              <li onClick={() => handleGoToProducts("63a02743a677a01040228cf2")}>Сантехника</li>
+              <li onClick={() => handleGoToProducts("63a02743a677a01040228ce6")}>Напольные покрытия</li>
+              <li onClick={() => handleGoToProducts("639f07d415a174d191b057a3")}>Инструменты</li>
+              <li onClick={() => handleGoToProducts("63a02743a677a01040228ce8")}>Обои</li>
+              <li onClick={() => handleGoToProducts("63a02743a677a01040228cec")}>Окна</li>
             </ul>
           </section>
           <hr className="dividing_line incomplete" />

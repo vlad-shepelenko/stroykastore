@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import CategoryService from "../../service/CategoryService";
 import { useState } from "react";
 import { useEffect } from "react";
+import ProductService from "../../service/ProductService";
 
 const PopularCategories = () => {
   const navigate = useNavigate();
@@ -19,6 +20,12 @@ const PopularCategories = () => {
       console.log(e);
     }
   }
+
+  const handleGoToCategory = async (id) => {
+    const products = await ProductService.getProductsByCategoryId(id)
+    navigate("/category", {state: {products: products.data}})
+  }
+
   return (
     <>
       <section className="popularCategories_container">
@@ -34,7 +41,7 @@ const PopularCategories = () => {
         <div className="cart_categories_container">
           {popularCategory
             ? popularCategory.map((el) => (
-                <div className="cart_categories" key={el._id}>
+                <div className="cart_categories" onClick={() => handleGoToCategory(el._id)} key={el._id}>
                   <div className="cart_categories_name">{el.categoryName}</div>
                   <div className="cart_categories_iamge">
                     <img

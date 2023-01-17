@@ -105,6 +105,8 @@
 
 .product_image {
   width: 276px;
+  height: 208px;
+  object-fit: contain;
 }
 
 @media screen and (max-width: 1439px) and (min-width: 1024px) {
