@@ -123,6 +123,10 @@
   justify-content: center;
 }
 
+.cart_action:hover, .cart_butoon:hover, .all_actions:hover{
+  cursor: pointer;
+}
+
 .image_action {
   height: 206px;
   width: 278px;

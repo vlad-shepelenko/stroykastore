@@ -10,6 +10,10 @@
   gap: 20px;
 }
 
+.cart_button:hover, .cart_button_count:hover, .cart_button_delete_product:hover{
+  cursor: pointer;
+}
+
 .cart_product_image{
   width: 278px;
   object-fit: contain;

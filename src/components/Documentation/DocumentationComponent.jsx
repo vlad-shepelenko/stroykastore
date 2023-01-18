@@ -1,6 +1,11 @@
 import "./documentation.scss";
 import { safedeal, privacypolicy, oferta } from "../../assets/images";
+
 const DocumentationComponent = () => {
+  const handleGoTo = async (url) => {
+    window.location.assign(url)
+  }
+
   return (
     <>
       <section className="documentation_container">
@@ -20,7 +25,7 @@ const DocumentationComponent = () => {
                 Оферта «Безопасная сделка»
               </span>
               <span className="documentation_size">PDF · 10 МБ</span>
-              <button className="download_documentation">Скачать</button>
+              <button onClick={() => handleGoTo('https://static.qiwi.com/ru/doc/oferta_safe-deal.pdf')} className="download_documentation">Скачать</button>
             </div>
           </div>
           <div className="documentation_cart">
@@ -36,7 +41,7 @@ const DocumentationComponent = () => {
                 Политика конфиденциальности
               </span>
               <span className="documentation_size">PDF · 10 МБ</span>
-              <button className="download_documentation">Скачать</button>
+              <button onClick={() => handleGoTo('https://zodbel.by/sites/default/files/confident/confident.pdf')} className="download_documentation">Скачать</button>
             </div>
           </div>
           <div className="documentation_cart">
@@ -50,7 +55,7 @@ const DocumentationComponent = () => {
             <div className="documentation_description">
               <span className="documentation_name">Оферта доставки</span>
               <span className="documentation_size">PDF · 10 МБ</span>
-              <button className="download_documentation">Скачать</button>
+              <button onClick={() => handleGoTo('https://atex-gr.ru/upload/Dogovor_oferty_U.pdf')} className="download_documentation">Скачать</button>
             </div>
           </div>
         </div>

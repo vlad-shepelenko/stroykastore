@@ -34,8 +34,7 @@ const CartComponent = () => {
   const user = toJS(store.user);
   const target = useRef(null);
   const size = useSize(target);
-  //let data = location.state.data;
-  //console.log(data);
+
   useEffect(() => {
     getCartById(user.id);
   }, []);
@@ -45,11 +44,10 @@ const CartComponent = () => {
   };
 
   const getCartById = async (user) => {
-    console.log(user)
     const response = await CartService.getCartById(user);
     setData(response.data);
   };
-  console.log(data)
+
   let count = 0;
   let price = 0;
   if(data.length > 0){
@@ -58,8 +56,7 @@ const CartComponent = () => {
     price = price + el.info.count * el.product.productPrice;
   });
 }
-  console.log(price.toFixed(2));
-  console.log(count);
+
   const handleIncrement = (id) => {
     data.map((el) => {
       if (el.info.product == id) {
@@ -70,7 +67,6 @@ const CartComponent = () => {
         setInc(inc + 1);
       }
     });
-    console.log(data);
   };
 
   const handleDecrement = (id) => {
@@ -87,7 +83,6 @@ const CartComponent = () => {
 
   const handleDeleteProduct = async (id, user) => {
     try {
-      console.log(id);
       const response = axios.delete(
         `http://localhost:5000/api/deleteCartProductById/${id}`
       );

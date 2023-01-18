@@ -17,12 +17,10 @@ const CheckoutForm = (data) => {
 
   const setOrder = async (order) => {
     const response = await OrderService.setOrder(order);
-    console.log(response);
   }
 
   const deleteUserCart = async (id) => {
     try{
-          console.log(id)
           const response = axios.delete(
             `http://localhost:5000/api/deleteUserCartById/${id}`
           );

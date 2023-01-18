@@ -10,6 +10,10 @@ nav {
   background-color: $lightGrey;
 }
 
+.navigation_button:hover{
+  cursor: pointer;
+}
+
 .navigation {
   display: flex;
   margin-right: 140px;

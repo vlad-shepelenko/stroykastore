@@ -24,7 +24,6 @@ const PopularBrands = () => {
   }
 
   const handleGoToCategory = async (id) => {
-    console.log(id)
     const products = await ProductService.getProductsByBrandId(id)
     navigate("/category", {state: {products: products.data}})
   }

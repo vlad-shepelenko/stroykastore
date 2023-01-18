@@ -2,12 +2,14 @@ import "./popularproducts.scss";
 import ProductService from "../../service/ProductService";
 import { useState, useContext } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import CartService from "../../service/CartService";
 import { Context } from "../..";
 import { toJS } from "mobx";
 import { message } from "antd";
 
 const PopularProducts = () => {
+  const navigate = useNavigate();
   const [popularProductsData, setPopularProductData] = useState('');
   const { store } = useContext(Context);
   const [messageApi, contextHolder] = message.useMessage();
@@ -43,11 +45,24 @@ const PopularProducts = () => {
         console.log(e);
       }
     } else {
-      console.log("not authorized");
       errorAuthorization();
     }
-    console.log("buttonClick");
   };
+
+  const handleGoToProduct = async (id) => {
+    const dataProduct = await getProductById(id);
+    const { product, supplier } = dataProduct;
+    navigate("/product", { state: { product, supplier } });
+  };
+
+  async function getProductById(id) {
+    try {
+      const response = await ProductService.getProductById(id);
+      return response.data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   const errorAuthorization = () => {
     messageApi.open({
@@ -73,7 +88,7 @@ const PopularProducts = () => {
         </div>
         <div className="cart_products_container">
           {popularProductsData ? popularProductsData.map((el) => (
-            <div className="cart_product" key={el._id}>
+            <div onClick={() => handleGoToProduct(el._id)} className="cart_product" key={el._id}>
               <div className="product_image_container">
                 <img className="product_image" src={el.productImage} alt="stoneware" />
               </div>

@@ -8,6 +8,10 @@
   gap: 16px;
 }
 
+.footer_logo:hover, .footer_text:hover{
+  cursor: pointer;
+}
+
 .footer_text {
   font-family: $font;
   font-style: normal;

@@ -2,12 +2,15 @@ import { arrow } from "../../assets/images";
 import "./actions.scss";
 import { message } from "antd";
 import { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import ActionService from '../../service/ActionService';
 import CartService from "../../service/CartService";
+import ProductService from "../../service/ProductService";
 import { Context } from "../..";
 import { toJS } from "mobx";
 
 const Actions = () => {
+  const navigate = useNavigate();
   const { store } = useContext(Context);
   const [actions, setActions] = useState('');
   const [messageApi, contextHolder] = message.useMessage();
@@ -26,6 +29,22 @@ const Actions = () => {
     setAuth(store.isAuth);
   }, []);
 
+  const handleGoToAllActions = async () => {
+    const actArray = await ActionService.getActions();
+    let testData = [];
+    for(let el of actArray.data){
+      testData.push({
+        _id: el.product._id,
+        productImage: el.product.productImage,
+        productName: el.product.productName,
+        productPrice: el.newPrice
+      })
+    }
+    navigate("/category", {
+      state: {products: testData },
+    });
+  }
+
   const handleAddToCart = async (e, product) => {
     e.stopPropagation();
     if (auth) {
@@ -38,11 +57,24 @@ const Actions = () => {
         console.log(e);
       }
     } else {
-      console.log("not authorized");
       errorAuthorization();
     }
-    console.log("buttonClick");
   };
+
+  const handleGoToProduct = async (id) => {
+    const dataProduct = await getProductById(id);
+    const { product, supplier } = dataProduct;
+    navigate("/product", { state: { product, supplier } });
+  };
+
+  async function getProductById(id) {
+    try {
+      const response = await ProductService.getProductById(id);
+      return response.data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   const errorAuthorization = () => {
     messageApi.open({
@@ -66,13 +98,13 @@ const Actions = () => {
         <div className="header_actions">
           <h2 className="title_actions">Акции</h2>
           <button className="all_actions">
-            <div>Все акции</div>
+            <div onClick={handleGoToAllActions}>Все акции</div>
             <img src={arrow} alt="arrow" />
           </button>
         </div>
         <div className="content_actions">
           {actions ? actions.map((el) => (
-            <div className="cart_action" key={el.action._id}>
+            <div onClick={() => handleGoToProduct(el.product._id)} className="cart_action" key={el.action._id}>
               <div className="image_action_container">
                 <div className="action_amount">-{el.action.actionPercent}%</div>
                 <img className="image_action" src={el.product.productImage} alt={el.product.productName} />

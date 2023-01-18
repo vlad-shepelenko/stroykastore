@@ -6,6 +6,10 @@
   flex-direction: column;
 }
 
+.cart_product:hover, .button_toCart:hover{
+  cursor: pointer;
+}
+
 .header_popularProducts {
   width: 100%;
   display: flex;

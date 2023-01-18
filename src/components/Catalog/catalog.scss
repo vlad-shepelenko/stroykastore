@@ -10,6 +10,10 @@
   gap: 20px;
 }
 
+.catalog_category_text:hover{
+  cursor: pointer;
+}
+
 .catalog_navigation {
   margin: 40px 0 0 100px;
   font-family: $font;

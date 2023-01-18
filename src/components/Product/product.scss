@@ -9,6 +9,10 @@
   color: #454950;
 }
 
+.product_tocart:hover, .product_count_button:hover{
+  cursor: pointer;
+}
+
 .product_general_image {
   width: 572px;
   height: 428px;
@@ -139,7 +143,7 @@
   line-height: 24px;
   color: #171b24;
   display: flex;
-  text-indent: 12px;
+  text-align: center;
 }
 
 .product_count_section {

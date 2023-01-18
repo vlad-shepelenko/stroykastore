@@ -1,13 +1,19 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { message } from "antd";
 import { Context } from "../..";
 import { productCategory, deliveryProduct } from "../../assets/images";
+import CartService from "../../service/CartService";
+import { toJS } from "mobx";
 import "./product.scss";
 
 const ProductComponent = () => {
+  const [count, setCount] = useState(1)
   const location = useLocation();
+  const [auth, setAuth] = useState("");
   const { store } = useContext(Context);
   const product = location.state.product;
+  const [messageApi, contextHolder] = message.useMessage();
   const supplier = location.state.supplier;
 
   useEffect(() => {
@@ -16,8 +22,57 @@ const ProductComponent = () => {
     }
   }, []);
 
+  useEffect(() => {
+    setAuth(store.isAuth);
+  }, []);
+
+  const handleAddToCart = async (e, product) => {
+    e.stopPropagation();
+    if (auth) {
+      try {
+        const user = toJS(store.user);
+        const response = await CartService.setCart(user.id, product, count);
+        successAuthorization();
+        return response.data;
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      errorAuthorization();
+    }
+  };
+
+  const errorAuthorization = () => {
+    messageApi.open({
+      type: "error",
+      content:
+        "Вы не авторизованы! Для добавления товара в корзину авторизуйтесь!",
+    });
+  };
+
+  const successAuthorization = () => {
+    messageApi.open({
+      type: "success",
+      content: "Товар успешно добавлен в корзину!",
+    });
+  };
+
+  const handleIncrement = () => {
+    setCount(count + 1)
+  }
+
+  const handleDecrement = () => {
+    if(count == 1){
+      setCount(1)
+    }
+    else{
+      setCount(count - 1)
+    }
+  }
+
   return (
     <>
+    {contextHolder}
       <section className="product_section">
         <span className="product_section_navigation">
           Главная → Каталог → {product.productName}
@@ -39,15 +94,16 @@ const ProductComponent = () => {
               {product.productPrice}
             </span>
             <div className="product_buttons_section">
-              <button className="product_tocart">В корзину</button>
+              <button onClick={(e) => handleAddToCart(e, product._id)}  className="product_tocart">В корзину</button>
               <div className="product_count_section">
-                <button className="product_count_button">+</button>
+                <button onClick={handleIncrement} className="product_count_button">+</button>
                 <input
                   type="text"
                   className="prodcut_count_input"
                   placeholder="99"
+                  value={count}
                 ></input>
-                <button className="product_count_button">-</button>
+                <button onClick={handleDecrement} className="product_count_button">-</button>
               </div>
             </div>
             <span className="product_provider">Поставщик: {supplier}</span>

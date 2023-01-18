@@ -9,6 +9,10 @@
   color: #454950;
 }
 
+.button_filter:hover, .category_products_sort_item:hover, .category_product_cart:hover, .category_product_cart_button:hover{
+  cursor: pointer;
+}
+
 .category_header_title {
   margin: 0;
   font-family: $font;

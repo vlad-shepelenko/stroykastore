@@ -7,13 +7,13 @@ const Navbar = () => {
   return (
     <>
       <nav>
-        <div className="city">
+        <div id="city" className="city">
           <span>
             <object data={mapcheck} type="image/svg+xml">
               Location
             </object>
           </span>
-          <span className="navigation_button">Город</span>
+          <span className="navigation_button">Минск</span>
         </div>
         <div className="navigation">
           <span

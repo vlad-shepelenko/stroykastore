@@ -39,7 +39,6 @@ const AllBrands = () => {
   };
 
   const handleGetProducts = async (name) => {
-    console.log(name)
     const response = await ProductService.getProductByBrandName(name);
     
     navigate("/category", {

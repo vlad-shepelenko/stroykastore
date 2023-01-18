@@ -6,6 +6,10 @@ header {
   width: 100%;
 }
 
+.login_button_enter:hover, .login_button_create:hover, .registration_button_enter:hover{
+  cursor: pointer;
+}
+
 #search_button_mobile {
   display: none;
 }
@@ -34,6 +38,10 @@ header {
   align-items: center;
   gap: 2px;
   width: 82px;
+}
+
+.button_unit:hover, .logo:hover, li:hover, .search_button:hover, .catalog:hover, .button_catalog:hover, .button_unit_image:hover{
+  cursor: pointer;
 }
 
 .button_unit_image {

@@ -12,13 +12,19 @@ import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const navigate = useNavigate();
+
+  const handleGotoHome = async () => {
+    navigate("/home")
+    let homeContainer = await document.getElementById("city");
+    homeContainer.scrollIntoView({ block: "start", behavior: "smooth" });
+  }
   return (
     <>
       <section className="footer_section">
         <div className="footer_nav_container">
           <div className="footer_company">
             <div className="footer_contacts">
-              <img className="footer_logo" src={footer_logo} alt="Logo"></img>
+              <img onClick={handleGotoHome} className="footer_logo" src={footer_logo} alt="Logo"></img>
               <div className="footer_tablet">
                 <div className="footer_mail">
                   <img src={footer_message} alt="e-mail"></img>

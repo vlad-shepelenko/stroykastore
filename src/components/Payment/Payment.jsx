@@ -41,7 +41,6 @@ const Payment = (price) => {
     const response = await PaymentService.getConfig();
     const { publishableKey } = response.data;
     setStripePromise(await loadStripe(publishableKey));
-    console.log(response);
   };
 
   let paymentAmount = price.price * 100;
@@ -53,7 +52,6 @@ const Payment = (price) => {
     const response = await PaymentService.createPayment(pric);
     const { clientSecret } = response.data;
     setClientSecret(clientSecret);
-    console.log(response);
   };
 
   return (

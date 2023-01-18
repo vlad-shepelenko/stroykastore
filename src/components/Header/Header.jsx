@@ -108,14 +108,11 @@ const Header = () => {
 
   const handleLogin = async () => {
     let { data } = await store.login(email, password);
-    console.log(data);
-    console.log(store.isAuth);
     if (data.user.isActivated === true) {
       setLogin(false);
     } else {
       error();
     }
-    console.log(data.user.isActivated);
   };
 
   const handleRegistration = () => {
@@ -128,16 +125,14 @@ const Header = () => {
     try {
       const user = toJS(store.user);
       const response = await CartService.getCartById(user.id);
-      navigate("/cart" /*, {state: {data: response.data}}*/);
+      navigate("/cart");
     } catch (e) {
       console.log(e);
     }
   };
 
   const handleGoToProducts = async (id) => {
-    console.log(id)
     const products = await ProductService.getProductsByCategoryId(id)
-    console.log(products.data)
     await navigate("/home")
     await navigate("/category", {state: {products: products.data}})
   }

@@ -47,10 +47,6 @@ const CategoryComponent = () => {
 
   let filteredBrand = [];
 
-  console.log(subcategoryName);
-  console.log(dataProd);
-  console.log(dataProd.length);
-
   const target = useRef(null);
   const size = useSize(target);
   const [show, setShow] = useState(false);
@@ -76,7 +72,6 @@ const CategoryComponent = () => {
 
   const getProducts = async () => {
     const productsArray = await ProductService.getProducts();
-    console.log(productsArray.data);
 
     setMinPrice(
       productsArray.data.sort(byFieldAsc("productPrice"))[0].productPrice
@@ -86,25 +81,19 @@ const CategoryComponent = () => {
     );
     setChangedMinPrice(minPrice);
     setChangedMaxPrice(maxPrice);
-    console.log("MAX", maxPrice);
-    console.log("MIN", minPrice);
   };
 
-  console.log("MAX", maxPrice);
-  console.log("MIN", minPrice);
   const getSuppliers = async () => {
     const suppliersArray = await SupplierService.getSuppliers();
     const arrayData = suppliersArray.data;
     const suppliers = [];
     arrayData.map((el) => {
       suppliers.push({ value: el._id, label: el.supplierName });
-      console.log(el);
     });
     setSupplier(suppliers);
   };
 
   const onChange = (e, brand) => {
-    console.log(brand);
     filteredBrand.push(brand._id);
   };
 
@@ -129,7 +118,6 @@ const CategoryComponent = () => {
   };
 
   const handleGoToProduct = async (id) => {
-    console.log(id);
     const dataProduct = await getProductById(id);
     const { product, supplier } = dataProduct;
     navigate("/product", { state: { product, supplier } });
@@ -145,18 +133,15 @@ const CategoryComponent = () => {
   }
 
   const sortByAsc = (fieldName) => {
-    console.log(fieldName);
     let data = dataProd.sort(byFieldAsc(`${fieldName}`));
     setDataProd(data);
     setCount(count + 1);
-    console.log(dataProd);
   };
 
   const sortByDesc = (fieldName) => {
     let data = dataProd.sort(byFieldDesc(`${fieldName}`));
     setDataProd(data);
     setCount(count + 1);
-    console.log(dataProd);
   };
 
   function byFieldAsc(field) {
@@ -179,10 +164,8 @@ const CategoryComponent = () => {
         console.log(e);
       }
     } else {
-      console.log("not authorized");
       errorAuthorization();
     }
-    console.log("buttonClick");
   };
 
   const handleReset = () => {
@@ -219,7 +202,6 @@ const CategoryComponent = () => {
     if (event.key === "Enter") {
       let searchBrand = [];
       brands.map((el) => {
-        console.log(el.brandName.match(`${searchName}`));
         if (el.brandName.match(searchName) !== null) {
           searchBrand.push(el);
         }
@@ -227,12 +209,9 @@ const CategoryComponent = () => {
 
       setBrands(searchBrand);
       if (searchName.length === 0) getBrands();
-      console.log(brands);
     }
   };
 
-  console.log(userId);
-  console.log(auth);
   const data = [
     "Test",
     "Test",
@@ -257,7 +236,7 @@ const CategoryComponent = () => {
       <section ref={target} className="category_section">
         <div className="category_header_section">
           <span className="category_header_navigation">
-            Главная → Каталог → {subcategoryName}
+            Главная → Каталог
           </span>
           <h1 className="category_header_title">{subcategoryName}</h1>
         </div>
@@ -436,7 +415,6 @@ const CategoryComponent = () => {
                 <h1>По вашему запросу ничего не найдено</h1>
               )}
             </div>
-            <Pagination defaultCurrent={1} total={50} />
           </div>
         </div>
       </section>
@@ -513,7 +491,7 @@ const CategoryComponent = () => {
                 style={{
                   width: 200,
                 }}
-                placeholder="Search to Select"
+                placeholder="Выберите поставщика"
                 optionFilterProp="children"
                 filterOption={(input, option) =>
                   (option?.label ?? "").includes(input)

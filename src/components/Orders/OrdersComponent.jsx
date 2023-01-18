@@ -9,12 +9,9 @@ import { useLocation, useNavigation } from "react-router-dom";
 
 const OrdersComponent = () => {
   const location = useLocation();
-  console.log(location.state.data)
   const { store } = useContext(Context);
   const [data, setData] = useState([]);
   const user = toJS(store.user);
-  console.log(user)
-  console.log(data);
 
   useEffect(() => {
     getOrdersById(user.id)
@@ -24,7 +21,7 @@ const OrdersComponent = () => {
     const response = await OrderService.getOrdersById(user);
     setData(response.data);
   }
-  console.log(data);
+  
   return (
     <>
       <section className="orders_section">

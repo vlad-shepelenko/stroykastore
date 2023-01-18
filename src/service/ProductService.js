@@ -11,12 +11,11 @@ export default class ProductService {
     }
 
     static async getProductById(id) {
-        console.log(id)
         return $api.post('/getProductById', { id })
     }
 
     static async getSearchProducts(name) {
-        console.log('name', name)
+
         return $api.post('/getSearchProduct', { name })
     }
 

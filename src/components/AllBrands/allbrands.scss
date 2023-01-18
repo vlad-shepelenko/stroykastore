@@ -9,6 +9,10 @@
   background: url("../../assets/images/allbrands.svg");
 }
 
+.button_all_brands:hover, .button_letter_brandes:hover, .brand_name_text:hover{
+  cursor: pointer;
+}
+
 .banner_navigation_text {
   padding-top: 40px;
   padding-left: 100px;

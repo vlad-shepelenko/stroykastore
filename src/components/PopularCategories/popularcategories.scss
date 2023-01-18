@@ -6,6 +6,10 @@
   flex-direction: column;
 }
 
+.cart_categories:hover, .all_categories_button:hover{
+  cursor: pointer;
+}
+
 .header_categories {
   width: 100%;
   display: flex;
