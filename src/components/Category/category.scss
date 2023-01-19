@@ -9,7 +9,10 @@
   color: #454950;
 }
 
-.button_filter:hover, .category_products_sort_item:hover, .category_product_cart:hover, .category_product_cart_button:hover{
+.button_filter:hover,
+.category_products_sort_item:hover,
+.category_product_cart:hover,
+.category_product_cart_button:hover {
   cursor: pointer;
 }
 
@@ -34,7 +37,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 16px;
-  width: 278px;
+  width: 350px;
   height: 736px;
   border: 1px solid #e8e9ea;
 }
@@ -48,11 +51,11 @@
 }
 
 .ant-slider-mark > .ant-slider-mark-text:nth-child(1) {
-  left: 0% !important;
+  left: 5% !important;
 }
 
 .ant-slider-mark > .ant-slider-mark-text:nth-child(2) {
-  left: 100% !important;
+  left: 90% !important;
 }
 
 //скрыть стрелки в инпуте
